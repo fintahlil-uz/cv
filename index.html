@@ -1354,6 +1354,9 @@ body.inapp #iab{display:flex}
 #lgbar>span{font:500 11px Jost,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--mmut);margin-right:4px}
 #lgbar button{border:1px solid var(--mac);border-radius:999px;background:transparent;color:var(--mac);font:600 13px Jost,sans-serif;padding:9px 16px;min-height:40px;cursor:pointer}
 #lgbar button.on{background:var(--mac);color:var(--macx)}
+#lgbar .txh{flex-basis:100%;font-size:13px;line-height:1.5;color:var(--mtx);border:1px dashed var(--mac);border-radius:14px;padding:10px 12px;margin-top:6px}
+#lgbar .txh div{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#form #lgbar .txh button{min-height:40px;padding:9px 14px;font-size:11px}
 #lgbar p{flex-basis:100%;margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--mtx);background:var(--mcard);border:1px solid var(--mbd);border-radius:14px;padding:10px 12px}
 body[data-t="4"] #lgbar,body[data-t="9"] #lgbar{display:none}
 .txb{font-style:normal;background:var(--mac);color:var(--macx);border-radius:6px;padding:1px 6px;font-size:10px;letter-spacing:.06em;margin-left:4px;vertical-align:1px}
@@ -1392,6 +1395,7 @@ body[data-t="4"] #lgbar,body[data-t="9"] #lgbar{display:none}
 .ed .aw{display:block;font-size:.92em;opacity:.78;font-style:italic;margin-top:2px}
 .k-nolv .sk i,.k-nolv .sk em{display:none!important}
 .k-nolv:not(.k-chip) .sk{display:list-item!important;list-style:disc inside;margin:5px 0}
+body.md #toast{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%)}
 #instb{display:none}body.caninst #instb{display:block}
 @media print{#md,#toast,#iab{display:none!important}body.pv #bar .pr{display:none!important}}
 </style>
@@ -1525,7 +1529,7 @@ SAMPLE.lg=[{t:'O‘zbek tili',lv:'N',ce:'',cs:'',cv:'',v:5},{t:'Rus tili',lv:'B2
 SAMPLE.po[0].o='https://namuna.uz/loyiha';SAMPLE.skNo=false;SAMPLE.lgMig=false;
 const SC=[['ism','Ism','Aziza'],['fam','Familiya','Karimova'],['ot','Otasining ismi (ixtiyoriy)','Rahimovna'],['lav','Lavozim','Masalan: marketing mutaxassisi'],['tel','Telefon','+998 90 123 45 67'],['tg','Telegram','@foydalanuvchi_nomi'],['em','Email','ism@email.uz'],['li','LinkedIn (ixtiyoriy)','linkedin.com/in/…'],['sh','Shahar','Toshkent']];
 const LV=['1 — boshlang‘ich','2','3 — o‘rta','4','5 — a’lo'];
-const LANGS=['O‘zbek tili','Qoraqalpoq tili','Rus tili','Ingliz tili','Nemis tili','Fransuz tili','Ispan tili','Italyan tili','Portugal tili','Turk tili','Arab tili','Fors tili','Xitoy tili','Yapon tili','Koreys tili','Hind tili','Urdu tili','Qozoq tili','Qirg‘iz tili','Tojik tili','Turkman tili','Ozarbayjon tili','Tatar tili','Ukrain tili','Belarus tili','Polyak tili','Chex tili','Golland tili','Shved tili','Norveg tili','Daniya tili','Fin tili','Grek tili','Rumin tili','Bolgar tili','Serb tili','Venger tili','Ivrit','Gruzin tili','Arman tili','Mo‘g‘ul tili','Pushtu tili','Bengal tili','Indonez tili','Malay tili','Vyetnam tili','Tay tili'];
+const LANGS=['O‘zbek tili','Rus tili','Ingliz tili','Xitoy tili','Koreys tili','Nemis tili','Fransuz tili','Turk tili'];
 const LV6=['A1','A2','B1','B2','C1','C2'],BANDS=['4.0','4.5','5.0','5.5','6.0','6.5','7.0','7.5','8.0','8.5','9.0'],EN1=['Ingliz tili'];
 const CERTS={ielts:{l:'IELTS Academic',lg:EN1,sc:BANDS,sl:'Umumiy ball (band)'},ieltsg:{l:'IELTS General Training',lg:EN1,sc:BANDS,sl:'Umumiy ball (band)'},
 toefl:{l:'TOEFL iBT',lg:EN1,n:[0,120],sl:'Ball (0–120)'},det:{l:'Duolingo English Test',lg:EN1,n:[10,160],sl:'Ball (10–160)'},pte:{l:'PTE Academic',lg:EN1,n:[10,90],sl:'Ball (10–90)'},toeic:{l:'TOEIC',lg:EN1,n:[10,990],sl:'Ball (10–990)'},
@@ -1533,9 +1537,9 @@ camb:{l:'Cambridge',lg:EN1,sc:['A2 Key (KET)','B1 Preliminary (PET)','B2 First (
 lsk:{l:'Linguaskill',lg:EN1,sc:LV6,sl:'Natija (CEFR)'},aptis:{l:'Aptis',lg:EN1,sc:LV6,sl:'Natija (CEFR)'},ote:{l:'Oxford Test of English',lg:EN1,sc:['A2','B1','B2','C1'],sl:'Natija (CEFR)'},
 goethe:{l:'Goethe-Zertifikat',lg:['Nemis tili'],sc:LV6,sl:'Daraja'},testdaf:{l:'TestDaF',lg:['Nemis tili'],sc:['TDN 3','TDN 4','TDN 5'],sl:'Natija'},osd:{l:'ÖSD',lg:['Nemis tili'],sc:LV6,sl:'Daraja'},dsh:{l:'DSH',lg:['Nemis tili'],sc:['1','2','3'],sep:'-',sl:'Natija'},
 delf:{l:'DELF / DALF',lg:['Fransuz tili'],sc:LV6,sl:'Daraja'},tcf:{l:'TCF',lg:['Fransuz tili'],sc:LV6,sl:'Natija (CEFR)'},
-dele:{l:'DELE',lg:['Ispan tili'],sc:LV6,sl:'Daraja'},siele:{l:'SIELE',lg:['Ispan tili'],sc:['A1','A2','B1','B2','C1'],sl:'Natija (CEFR)'},
-cils:{l:'CILS',lg:['Italyan tili'],sc:LV6,sl:'Daraja'},celi:{l:'CELI',lg:['Italyan tili'],sc:LV6,sl:'Daraja'},caple:{l:'CAPLE',lg:['Portugal tili'],sc:LV6,sl:'Daraja'},
-hsk:{l:'HSK',lg:['Xitoy tili'],sc:['1','2','3','4','5','6','7','8','9'],sl:'Daraja'},jlpt:{l:'JLPT',lg:['Yapon tili'],sc:['N5','N4','N3','N2','N1'],sl:'Daraja'},topik:{l:'TOPIK',lg:['Koreys tili'],sc:['1','2','3','4','5','6'],sl:'Daraja'},
+
+
+hsk:{l:'HSK',lg:['Xitoy tili'],sc:['1','2','3','4','5','6','7','8','9'],sl:'Daraja'},topik:{l:'TOPIK',lg:['Koreys tili'],sc:['1','2','3','4','5','6'],sl:'Daraja'},
 trki:{l:'TORFL',lg:['Rus tili'],sc:['TEU (A1)','TBU (A2)','TRKI-1 (B1)','TRKI-2 (B2)','TRKI-3 (C1)','TRKI-4 (C2)'],sl:'Daraja'},
 tomer:{l:'TÖMER',lg:['Turk tili'],sc:LV6,sl:'Daraja'},yee:{l:'Yunus Emre (TYS)',lg:['Turk tili'],sc:LV6,sl:'Daraja'},
 cefr:{l:'Milliy sertifikat (CEFR)',g:1,sc:LV6,sl:'Daraja'},oth:{l:'Boshqa sertifikat (o‘zim yozaman)',g:1}};
@@ -1546,7 +1550,7 @@ function lgMig2(x){if(!x)return;if(x.t&&!LANGS.includes(x.t)){const m=LANGS.find
     else if(m=c.match(/toefl\D*(\d{2,3})/i)){x.cs='toefl';x.cv=m[1]}else if(m=c.match(/(duolingo|det)\D*(\d{2,3})/i)){x.cs='det';x.cv=m[2]}
     else if(m=c.match(/(cefr|multilevel|milliy)\D*([ABC][12])/i)){x.cs='cefr';x.cv=m[2].toUpperCase()}else x.cs='oth';
     if(x.cs!=='oth')x.ce='';if(x.cs&&x.cs!=='oth'&&CERTS[x.cs].sc&&!CERTS[x.cs].sc.includes(x.cv))x.cv=''}}
-  if(x.cs&&!CERTS[x.cs])x.cs='oth'}
+  if(x.cs&&!CERTS[x.cs]){const OL={dele:'DELE',siele:'SIELE',cils:'CILS',celi:'CELI',caple:'CAPLE',jlpt:'JLPT'};x.ce=((OL[x.cs]||x.cs)+' '+(x.cv||'')).trim();x.cs='oth';x.cv=''}}
 function certTxt(x){if(x.cs&&x.cs!=='oth'){const c=CERTS[x.cs];if(!c)return '';const l=x.cs==='cefr'?CVT('natc'):c.l;return x.cv?l+(c.sep||' ')+x.cv:l}return String(x.ce||'').trim()}
 function certLv(x){const c=CERTS[x.cs],v=String(x.cv||'');if(!c||!v)return '';if(LV6.includes(v)&&c.sc&&c.sc.includes(v))return v;const m=v.match(/\(([ABC][12])\)|^([ABC][12])\b/);if(m)return m[1]||m[2];
   if(x.cs==='ielts'||x.cs==='ieltsg'){const b=+v;return b>=8.5?'C2':b>=7?'C1':b>=5.5?'B2':b>=4?'B1':''}if(x.cs==='toefl'){const n=+v;return n>=114?'C2':n>=95?'C1':n>=72?'B2':n>=42?'B1':''}return ''}
@@ -1621,7 +1625,28 @@ function txMissing(){if(!txOn())return 0;const c=D.cl,T=(D.tx&&D.tx[c])||{},has=
   ['lav','profil','ach'].forEach(k=>{if(has(D[k])&&!txFresh(T,k,D[k]))n++});
   Object.keys(TXF).forEach(k=>{if(LS[k][2]&&!D.on[k])return;(D[k]||[]).forEach(it=>{if(!(it.t||it.o))return;const t=(it.tx&&it.tx[c])||{};TXF[k].forEach(f=>{if(has(it[f])&&!txFresh(t,f,it[f])&&!(autoI(k,it,f)&&!txStale(t,f,it[f]))&&!(k==='sk'&&/^[\x00-\x7f]+$/.test(it[f])&&c==='en'))n++})})});return n}
 const TXB=()=>txOn()?` <i class="txb">${LNM[D.cl]}</i>`:'';
-function lgbar(){const b=$('#lgbar');if(!b)return;b.innerHTML='<span>CV tili</span>'+['uz','en','ru'].map(v=>`<button data-lgc="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')+(txOn()?`<p>Hozir CV’ning <b>${D.cl==='en'?'inglizcha':'ruscha'}</b> versiyasini yozyapsiz. Bo‘sh maydonlarda kulrang ko‘rinib turgan o‘zbekcha matn ishlatiladi. Telefon, sana va daraja barcha tillarda bir xil.</p>`:'')}
+function txEntries(){const E=[],f=v=>String(v||'').trim(),on=k=>!LS[k]||!LS[k][2]||D.on[k],LB={lav:'Lavozim',profil:'O‘zim haqimda',ach:'Yutuqlar'};
+  ['lav','profil','ach'].forEach(k=>{if(f(D[k]))E.push({r:'s|'+k,t:D[k]})});
+  if(D.on.pe)['m','dl'].forEach(x=>{if(f(D.pe[x]))E.push({r:'s|pe_'+x,t:D.pe[x]})});
+  Object.keys(TXF).forEach(k=>{if(!on(k))return;(D[k]||[]).forEach((it,i)=>TXF[k].forEach(x=>{if(k==='lg'&&!it.lo)return;if(k==='edu'&&x==='o'&&/^[\x00-\x7f]+$/.test(it.o||''))return;if(f(it[x]))E.push({r:'i|'+k+'|'+i+'|'+x,t:it[x]})}))});return E}
+function txBase(ref){const p=ref.split('|');if(p[0]==='s')return p[1].startsWith('pe_')?(D.pe[p[1].slice(3)]||''):(D[p[1]]||'');const it=(D[p[1]]||[])[+p[2]];return it?(it[p[3]]||''):null}
+function txSet(ref,val,base){const p=ref.split('|'),c=D.cl;if(p[0]==='s'){const T=txT();T[p[1]]=val;T['_s_'+p[1]]=base;return true}
+  const it=(D[p[1]]||[])[+p[2]];if(!it)return false;if(!it.tx||typeof it.tx!=='object')it.tx={};const T=(it.tx[c]=it.tx[c]||{});T[p[3]]=val;T['_s_'+p[3]]=base;return true}
+function txExport(){const E=txEntries();if(!E.length)return toast('Tarjima qilinadigan o‘zbekcha matn yo‘q');lss('cvstx',JSON.stringify({l:D.cl,E}));
+  const txt=E.map((e,i)=>`[[${i+1}]]\n${e.t}`).join('\n\n'),lang=D.cl==='en'?'ingliz':'rus';
+  modal(`<h3>Matnni ${lang} tiliga tarjima qilish</h3><ol><li>Pastdagi matn nusxalandi. Nusxalanmagan bo‘lsa, uni belgilab o‘zingiz nusxalang.</li><li>Uni <b>Google Tarjimon</b>, <b>Claude</b> yoki boshqa tarjimonga joylang: o‘zbek tilidan ${lang} tiliga.</li><li>Tarjimani to‘liq nusxalang va <b>«Tarjimani joylash»</b> tugmasini bosing.</li></ol><p><small>[[1]], [[2]] kabi raqamlarni o‘chirmang: ular har bir tarjimani o‘z maydoniga joylash uchun kerak.</small></p><textarea id="txout" rows="8" readonly style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif">${esc(txt)}</textarea><div class="mbtn"><button class="pri" data-txin="1">Tarjimani joylash</button><button data-mx="1">Yopish</button></div>`);
+  setTimeout(()=>{const a=$('#txout');if(a){a.focus();a.select()}},50);copyTxt(txt).then(ok=>{if(ok)toast('✓ '+E.length+' ta matn nusxalandi')})}
+function txImport(){modal(`<h3>Tarjimani joylash</h3><p>Tarjimonda olingan matnni shu yerga to‘liq joylang, [[1]], [[2]] raqamlari bilan birga.</p><textarea id="txin" rows="9" style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif" placeholder="[[1]]&#10;Credit Specialist&#10;&#10;[[2]]&#10;…"></textarea><div class="mbtn"><button class="pri" data-txapply="1">Maydonlarga joylash</button><button data-mx="1">Bekor qilish</button></div>`);setTimeout(()=>{const a=$('#txin');if(a)a.focus()},50)}
+function txApply(){const raw=String(($('#txin')||{}).value||'');let st=null;try{st=JSON.parse(lsg('cvstx')||'null')}catch(e){}
+  if(!st||!Array.isArray(st.E))return toast('Avval «Matnni nusxalash» tugmasini bosing');
+  const parts=raw.split(/\[\[?\s*(\d+)\s*\]\]?/);let n=0,miss=0;
+  for(let i=1;i<parts.length;i+=2){const k=+parts[i]-1,v=String(parts[i+1]||'').replace(/^\s*\n|\s+$/g,'').trim(),e=st.E[k];if(!e||!v){miss++;continue}
+    const cur=txBase(e.r);if(cur===null){miss++;continue}if(st.l!==D.cl){D.cl=st.l}if(txSet(e.r,v,e.t))n++}
+  if(!n)return toast('Hech narsa joylanmadi. [[1]], [[2]] raqamlari bor tarjimani joylang');
+  mclose();fill();opts();chg();toast('✓ '+n+' ta tarjima joylandi'+(miss?', '+miss+' tasi topilmadi':'')+'. CV’ni tekshirib chiqing')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-txexp],[data-txin],[data-txapply]');if(!b)return;e.preventDefault();
+  if(b.dataset.txexp)txExport();if(b.dataset.txin)txImport();if(b.dataset.txapply)txApply()},true);
+function lgbar(){const b=$('#lgbar');if(!b)return;b.innerHTML='<span>CV tili</span>'+['uz','en','ru'].map(v=>`<button data-lgc="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')+(txOn()?`<p>Hozir CV’ning <b>${D.cl==='en'?'inglizcha':'ruscha'}</b> versiyasini yozyapsiz. Bo‘sh maydonlarda kulrang ko‘rinib turgan o‘zbekcha matn ishlatiladi. Telefon, sana va daraja barcha tillarda bir xil.</p><div class="txh"><b>Tez tarjima:</b> barcha o‘zbekcha matnni nusxalab, Google Tarjimon yoki Claude’da tarjima qiling va natijani joylang. Har bir tarjima o‘z maydoniga tushadi.<div><button data-txexp="1">1. Matnni nusxalash</button><button data-txin="1">2. Tarjimani joylash</button></div></div>`:'')}
 function lists(){
   const row=(k,fs)=>D[k].map((r,i)=>`<div class="row">${fs.filter(([f])=>rowShow(k,r,f)).map(([f,l,ty])=>{l=rowLab(k,r,f,l);const tx=txOn()&&TXF[k]&&TXF[k].includes(f),ph=tx?(autoI(k,r,f)||r[f]||PHL[k+'.'+f]||''):(PHL[k+'.'+f]||'');return fld(l+(tx?TXB():''),`data-k="${k}" data-i="${i}" data-f="${f}"${rowAttr(k,r,f)}${tx?' data-tx="1"':''}${ph?` placeholder="${esc(ph)}"`:''}`,tx?((r.tx&&r.tx[D.cl]&&r.tx[D.cl][f])||''):rowVal(k,r,f),typeof ty==='function'?ty(r):ty)+(tx&&txStale(r.tx&&r.tx[D.cl],f,r[f])?staleHint('i|'+k+'|'+i+'|'+f):'')+rowHint(k,r,f)}).join('')}<button class="del" data-del="${k}:${i}">O‘chirish</button></div>`).join('')+`<button data-add="${k}">Qo‘shish</button>`;
   const sw=(k,n,on)=>`<div class="sw"><span>${n}</span><span class="tg"><input type="checkbox" data-on="${k}"${on?' checked':''}><i></i></span></div>`;
@@ -2177,7 +2202,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='1.4',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='1.5',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -2259,7 +2284,7 @@ lav:['Lavozim',`<p>Vakansiyadagi lavozim nomini aynan shunday yozing. Kadrlar bo
 profil:['O‘zim haqimda',`<p>2–3 jumla yetarli: kimsiz, necha yil tajribangiz bor, nimada kuchlisiz va qanday ish izlayapsiz.</p><p>✅ «Bankda 2 yillik tajribaga ega kredit mutaxassisi. Kichik biznes mijozlari bilan ishlash va muammoli kreditlarni undirishda natija ko‘rsatganman. Bosh ofisda risk yo‘nalishida ishlashni maqsad qilganman.»</p><p>❌ «Mas’uliyatli, xushmuomala, kompyuterni yaxshi biladigan, tez o‘rganadigan xodimman.» Bu so‘zlarni hamma yozadi, ular hech narsani isbotlamaydi.</p>`],
 exp:['Ish tajribasi',`<p>Eng oxirgi ish joyidan boshlang. «Vazifalar» maydonida har qatorga bitta natija yozing, iloji boricha raqam bilan.</p><p>✅ Oyiga 60+ kredit arizasini rasmiylashtirdim<br>✅ Muammoli qarzdorlikni 6 oyda 25% ga kamaytirdim<br>✅ 300+ mijozga xizmat ko‘rsatdim</p><p>❌ Kreditlar bilan ishladim<br>❌ Mijozlarga xizmat ko‘rsatish</p><p>Sana kiritsangiz, ish davomiyligi o‘zi hisoblanadi.</p>`],
 edu:['Ta’lim',`<p>Darajani ro‘yxatdan tanlang, yo‘nalish va muassasani to‘liq yozing. O‘qiyotgan bo‘lsangiz, «Hozir shu yerda o‘qiyapman» ni belgilang.</p><p>CV’da shunday chiqadi: <b>Moliya, tugallanmagan oliy</b> · KIUT · 2023–2027 (o‘qimoqda) · sirtqi</p><p>Tugallanmagan oliy uchun ta’lim shakli majburiy: ish beruvchi qaysi vaqtda ishlay olishingizni shundan biladi.</p><p>GPA yuqori bo‘lsa (masalan, 4.5/5) yoki grant bilan o‘qisangiz, albatta yozing. Yangi bitiruvchilar uchun bu tajriba o‘rnini bosadi.</p>`],
-lg:['Tillar',`<p>Darajani xalqaro CEFR shkalasida tanlang:</p><p><b>A1–A2</b>: oddiy so‘zlar va iboralar<br><b>B1</b>: kundalik mavzularda gaplasha olasiz<br><b>B2</b>: ish mavzularida erkin gaplasha olasiz<br><b>C1</b>: murakkab matn va muzokaralar<br><b>C2</b>: ona tiliga yaqin</p><p>Sertifikatingiz bo‘lsa, ro‘yxatdan tanlang va natijani belgilang: u darajangizni isbotlaydi. Ro‘yxat tanlangan tilga qarab o‘zgaradi: ingliz tili uchun IELTS, TOEFL, Duolingo, Cambridge; nemis tili uchun Goethe, TestDaF; xitoy tili uchun HSK va hokazo. «Milliy sertifikat (CEFR)» har qanday til uchun mavjud.</p>`],
+lg:['Tillar',`<p>Darajani xalqaro CEFR shkalasida tanlang:</p><p><b>A1–A2</b>: oddiy so‘zlar va iboralar<br><b>B1</b>: kundalik mavzularda gaplasha olasiz<br><b>B2</b>: ish mavzularida erkin gaplasha olasiz<br><b>C1</b>: murakkab matn va muzokaralar<br><b>C2</b>: ona tiliga yaqin</p><p>Sertifikatingiz bo‘lsa, ro‘yxatdan tanlang va natijani belgilang: u darajangizni isbotlaydi. Ro‘yxat tanlangan tilga qarab o‘zgaradi: ingliz tili uchun IELTS, TOEFL, Duolingo, Cambridge; nemis tili uchun Goethe, TestDaF; xitoy tili uchun HSK; koreys tili uchun TOPIK va hokazo. «Milliy sertifikat (CEFR)» har qanday til uchun mavjud.</p>`],
 sk:['Ko‘nikmalar',`<p>Aniq dastur va usullarni yozing, umumiy sifatlarni emas. 5–8 ta ko‘nikma yetarli.</p><p>✅ Excel (VLOOKUP, pivot jadval)<br>✅ 1C: Buxgalteriya<br>✅ Kredit tahlili</p><p>❌ Kompyuter<br>❌ Tez o‘rganaman</p>`],
 ach:['Yutuqlar',`<p>O‘lchab bo‘ladigan va boshqalardan ajratib turadigan natijalarni yozing.</p><p>✅ 2025 yil filial bo‘yicha sotuv rejasini 130% bajardim (1-o‘rin)<br>✅ «Yilning eng yaxshi xodimi» (2024)</p><p>❌ Yaxshi xodim bo‘lganman</p>`]};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-txok]');if(!b)return;e.preventDefault();const p=b.dataset.txok.split('|'),c=D.cl;

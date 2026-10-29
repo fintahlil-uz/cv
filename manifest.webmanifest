@@ -1,0 +1,16 @@
+{
+  "name": "CV Studio — rezyume yaratuvchi",
+  "short_name": "CV Studio",
+  "description": "CV, ma’lumotnoma va arizani bepul tayyorlash. Ma’lumotlar faqat qurilmangizda saqlanadi.",
+  "lang": "uz",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#efe4d1",
+  "theme_color": "#454d2c",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

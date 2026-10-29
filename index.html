@@ -1367,6 +1367,9 @@ body:not([data-t="0"]) #lgbar{display:none}
 #trbar .trl{display:flex;gap:4px;flex:none}#trbar .trl button{padding:6px 10px;min-height:36px}#trbar button.on{background:var(--mac);color:var(--macx)}
 #md .mseg{display:flex;gap:8px;margin:6px 0}#md .mseg button{flex:1;border:1px solid var(--mac);border-radius:999px;padding:11px;background:transparent;color:var(--mac);font:600 13px Jost,sans-serif;cursor:pointer}#md .mseg button.pri{background:var(--mac);color:var(--macx)}
 @media print{#trbar{display:none!important}}
+.cv a,.cv p,.cv li,.cv small,.cv time,.cv .m,.cv .ed span,.cv .contact div{overflow-wrap:anywhere}
+.cv>.T,.cv>.L,.cv>.R,.cv>.B{min-width:0}.cv .T>.sec{min-width:0}
+.t84 .T .contact{flex:0 0 250px}
 .txb{font-style:normal;background:var(--mac);color:var(--macx);border-radius:6px;padding:1px 6px;font-size:10px;letter-spacing:.06em;margin-left:4px;vertical-align:1px}
 #form label{font:500 14px Jost,sans-serif;letter-spacing:0;text-transform:none;color:var(--mtx)}
 #form h2{font:600 13px Jost,sans-serif;letter-spacing:.08em;color:var(--mtx);opacity:.8;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -1616,9 +1619,11 @@ const CITY={"toshkent":["Tashkent","Ташкент"],"samarqand":["Samarkand","�
 const LANGN={"o'zbek":["Uzbek","Узбекский"],"rus":["Russian","Русский"],"ingliz":["English","Английский"],"turk":["Turkish","Турецкий"],"nemis":["German","Немецкий"],"fransuz":["French","Французский"],"koreys":["Korean","Корейский"],"xitoy":["Chinese","Китайский"],"arab":["Arabic","Арабский"],"tojik":["Tajik","Таджикский"],"qozoq":["Kazakh","Казахский"],"qirg'iz":["Kyrgyz","Киргизский"],"turkman":["Turkmen","Туркменский"],"yapon":["Japanese","Японский"],"ispan":["Spanish","Испанский"],"italyan":["Italian","Итальянский"],"fors":["Persian","Персидский"],"hind":["Hindi","Хинди"],"qoraqalpoq":["Karakalpak","Каракалпакский"]};
 Object.assign(LANGN,{"portugal":["Portuguese","Португальский"],"ozarbayjon":["Azerbaijani","Азербайджанский"],"tatar":["Tatar","Татарский"],"ukrain":["Ukrainian","Украинский"],"belarus":["Belarusian","Белорусский"],"polyak":["Polish","Польский"],"chex":["Czech","Чешский"],"golland":["Dutch","Нидерландский"],"shved":["Swedish","Шведский"],"norveg":["Norwegian","Норвежский"],"daniya":["Danish","Датский"],"fin":["Finnish","Финский"],"grek":["Greek","Греческий"],"rumin":["Romanian","Румынский"],"bolgar":["Bulgarian","Болгарский"],"serb":["Serbian","Сербский"],"venger":["Hungarian","Венгерский"],"ivrit":["Hebrew","Иврит"],"gruzin":["Georgian","Грузинский"],"arman":["Armenian","Армянский"],"mo'g'ul":["Mongolian","Монгольский"],"pushtu":["Pashto","Пушту"],"bengal":["Bengali","Бенгальский"],"indonez":["Indonesian","Индонезийский"],"malay":["Malay","Малайский"],"vyetnam":["Vietnamese","Вьетнамский"],"tay":["Thai","Тайский"],"urdu":["Urdu","Урду"]});
 function ruTr(v){return cyr(String(v||'')).replace(/[ЎўҚқҒғҲҳ]/g,c=>({Ў:'У',ў:'у',Қ:'К',қ:'к',Ғ:'Г',ғ:'г',Ҳ:'Х',ҳ:'х'}[c])).replace(/([АЕЁИОУЭЮЯаеёиоуэюя])ъ/g,'$1').replace(/Ъ/g,'').replace(/ъ(?=[^еёюяЕЁЮЯ]|$)/g,'')}
+function enTr(v){return String(v||'').replace(/([oO])[‘ʻ’'`]([gG])[‘ʻ’'`]li\b/g,(m,a)=>(a==='O'?'U':'u')+'gli').replace(/([oOgG])[‘ʻ’'`]/g,'$1').replace(/[‘ʻ’'`ʼ]/g,'')}
+const shCut=v=>String(v||'').trim().replace(/[\s,]+(shahri|shahar|sh\.?)$/i,'');
 function autoS(k){const c=D.cl,v=D[k];if(!v)return '';const li=c==='ru'?1:0;
-  if(k==='sh'){const m=CITY[nrm(v).replace(/\s+(shahri|sh\.)$/,'')];return m?m[li]:(c==='ru'?ruTr(v):'')}
-  if(c==='ru'&&['ism','fam','ot'].includes(k))return ruTr(v);return ''}
+  if(k==='sh'){const m=CITY[nrm(shCut(v))];return m?m[li]:(c==='ru'?ruTr(shCut(v)):enTr(shCut(v)))}
+  if(['ism','fam','ot'].includes(k))return c==='ru'?ruTr(v):enTr(v);return ''}
 function autoI(k,it,f){if(k==='lg'&&f==='t'){const m=LANGN[nrm(it.t).replace(/\s+tili.*$/,'').split(/\s+/)[0]];return m?m[D.cl==='ru'?1:0]:''}return ''}
 const txFresh=(T,k,base)=>!!String((T||{})[k]||'').trim()&&!(('_s_'+k) in T&&String(T['_s_'+k]||'')!==String(base||''));
 const txStale=(T,k,base)=>!!String((T||{})[k]||'').trim()&&('_s_'+k) in T&&String(T['_s_'+k]||'')!==String(base||'');
@@ -1927,7 +1932,12 @@ function paginate(){const pg=$('#pages');
     }
   });}
 function fit(){$('#wrap').style.zoom=Math.min(1,($('#view').clientWidth-8)/800)}
-function lay(){build();$('#pages').replaceChildren();const [,,l,r,t=[],b=[]]=TH[cur],p0=mk(0);[['L',l],['R',r],['T',t],['B',b]].forEach(([c,a])=>a.forEach(k=>p0.querySelector('.'+c).appendChild(S[k])));paginate();return $('#pages').children.length}
+function fitHead(root){root.querySelectorAll('.cv h1,.cv h2').forEach(h=>{const pg=h.closest('.cv'),box=h.parentElement;if(!pg||!box)return;
+  const els=[h,...h.querySelectorAll('span,b')],fs0=els.map(e=>parseFloat(getComputedStyle(e).fontSize));
+  const over=()=>{const P=pg.getBoundingClientRect(),B=box.getBoundingClientRect(),Hr=h.getBoundingClientRect(),L=Math.max(P.left,B.left,Hr.left)-1,Rt=Math.min(P.right,B.right,Hr.right)+1;let o=B.right>P.right+1||B.left<P.left-1;
+    els.forEach(e=>{const r=document.createRange();r.selectNodeContents(e);[...r.getClientRects()].forEach(q=>{if(q.width&&(q.right>Rt||q.left<L))o=true})});return o};
+  let k=1;while(k>.45&&over()){k*=.93;els.forEach((e,i)=>e.style.fontSize=(fs0[i]*k).toFixed(1)+'px')}})}
+function lay(){build();$('#pages').replaceChildren();const [,,l,r,t=[],b=[]]=TH[cur],p0=mk(0);[['L',l],['R',r],['T',t],['B',b]].forEach(([c,a])=>a.forEach(k=>p0.querySelector('.'+c).appendChild(S[k])));fitHead(p0);paginate();return $('#pages').children.length}
 function render(){
   if(!vis())return;
   $('#wrap').style.zoom=1;zl=0;let n=lay();
@@ -2215,7 +2225,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='1.6',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='1.7',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);

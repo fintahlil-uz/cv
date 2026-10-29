@@ -1380,6 +1380,18 @@ body[data-t="4"] #lgbar,body[data-t="9"] #lgbar{display:none}
 #gg .recall button{border:1px solid var(--mac);border-radius:999px;background:var(--mac);color:var(--macx);font:600 14px Jost,sans-serif;padding:14px 22px;cursor:pointer}
 #opt .omore{font-weight:600}
 .flash{animation:fl 1.2s 2}
+#form label.chk{display:flex;align-items:center;gap:12px;margin:14px 0}
+#form label.chk input{width:22px;height:22px;margin:0;padding:0;flex:none;accent-color:var(--mac)}
+#form select[data-need]{border-color:#b3462f;box-shadow:0 0 0 3px #b3462f22}
+#form em.req{font-style:normal;color:#b3462f;font-weight:600;font-size:12px}
+#form .hint{font-size:13px;line-height:1.45;color:var(--mtx);background:#f5d9a64d;border:1px solid #d9a95c88;border-radius:12px;padding:9px 11px;margin:-4px 0 12px}
+.cv a{color:inherit;text-decoration:none}
+.cv a.lnk{text-decoration:underline;text-underline-offset:2px}
+.lg span small{display:block;font-size:.82em;opacity:.72;margin-top:1px;letter-spacing:0;text-transform:none}
+.lg em.cefr{letter-spacing:.04em!important;font-weight:700;white-space:nowrap;font-style:normal}
+.ed .aw{display:block;font-size:.92em;opacity:.78;font-style:italic;margin-top:2px}
+.k-nolv .sk i,.k-nolv .sk em{display:none!important}
+.k-nolv:not(.k-chip) .sk{display:list-item!important;list-style:disc inside;margin:5px 0}
 #instb{display:none}body.caninst #instb{display:block}
 @media print{#md,#toast,#iab{display:none!important}body.pv #bar .pr{display:none!important}}
 </style>
@@ -1508,12 +1520,19 @@ ach:'Yilning eng yaxshi kontent loyihasi — Namuna Media (2024)\nBitta kampaniy
 const SAMPLE=JSON.parse(JSON.stringify(D));
 SAMPLE.tx={en:{"lav": "Digital Marketing Specialist", "profil": "Digital marketing specialist with 3 years of experience. Plans, runs and analyses social media and advertising campaigns. Works with clear goals and measurable results.", "ach": "Best Content Project of the Year — Namuna Media (2024)\nIncreased sales by 30% with a single campaign\nSuccessfully ran 25+ campaigns", "pe_m": "Single", "pe_dl": "Category B"},ru:{"lav": "Специалист по цифровому маркетингу", "profil": "Специалист по цифровому маркетингу с опытом работы 3 года. Планирует, запускает и анализирует кампании в социальных сетях и рекламе. Работает на конкретные цели и измеримый результат.", "ach": "Лучший контент-проект года — Namuna Media (2024)\nРост продаж на 30% благодаря одной кампании\nУспешно проведено более 25 кампаний", "pe_m": "Не замужем", "pe_dl": "Категория B"}};
 (()=>{const I={"exp": [{"en": {"t": "SMM Manager", "o": "Namuna Media LLC", "p": "Built a monthly content plan and managed 4 social media channels for the brand.\nSet up and ran 25+ advertising campaigns.\nGrew the audience by 40% in 6 months based on performance reports."}, "ru": {"t": "SMM-менеджер", "o": "ООО «Namuna Media»", "p": "Составляла ежемесячный контент-план и вела 4 социальные сети бренда.\nНастроила и запустила более 25 рекламных кампаний.\nПо итогам отчётов увеличила аудиторию на 40% за 6 месяцев."}}, {"en": {"t": "Content Creator", "o": "Namuna Studio", "p": "Produced text and visual content and edited short videos.\nWorked with clients based on technical briefs."}, "ru": {"t": "Контент-мейкер", "o": "Namuna Studio", "p": "Готовила текстовый и визуальный контент, монтировала короткие видео.\nРаботала с клиентами по техническому заданию."}}], "edu": [{"en": {"t": "Marketing (Bachelor’s degree)", "o": "Namuna University"}, "ru": {"t": "Маркетинг (бакалавр)", "o": "Университет Namuna"}}], "sk": [{"en": {"t": "Content planning"}, "ru": {"t": "Контент-планирование"}}, {"en": {"t": "Ad platforms (Ads)"}, "ru": {"t": "Рекламные кабинеты (Ads)"}}, {"en": {"t": "Canva / Figma"}, "ru": {"t": "Canva / Figma"}}, {"en": {"t": "Copywriting"}, "ru": {"t": "Копирайтинг"}}, {"en": {"t": "Google Analytics"}, "ru": {"t": "Google Analytics"}}], "ce": [{"en": {"t": "Advertising Campaigns Course", "o": "Namuna Academy"}, "ru": {"t": "Курс по рекламным кампаниям", "o": "Академия Namuna"}}, {"en": {"t": "Content Marketing Certificate", "o": "Namuna Online"}, "ru": {"t": "Сертификат по контент-маркетингу", "o": "Namuna Online"}}, {"en": {"t": "Data Analysis Fundamentals", "o": "Namuna Center"}, "ru": {"t": "Основы анализа данных", "o": "Центр Namuna"}}], "po": [{"en": {"t": "Namuna Brand — Instagram campaign", "d": "120K reach in 3 months"}, "ru": {"t": "Бренд Namuna — кампания в Instagram", "d": "Охват 120 тыс. за 3 месяца"}}], "rf": [{"en": {"o": "Director, Namuna Media LLC"}, "ru": {"o": "Директор, ООО «Namuna Media»"}}]};Object.keys(I).forEach(k=>I[k].forEach((t,i)=>{if(SAMPLE[k][i])SAMPLE[k][i].tx=t}))})();
+SAMPLE.edu=[{lv:'bak',t:'Marketing',o:'Namuna universiteti',y1:'2018',y2:'2022',cur:false,sh:'kun',shc:false,gpa:'',aw:'',d:'',tx:{en:{t:'Marketing',o:'Namuna University'},ru:{t:'Маркетинг',o:'Университет Namuna'}}}];
+SAMPLE.lg=[{t:'O‘zbek tili',lv:'N',ce:'',v:5},{t:'Rus tili',lv:'B2',ce:'',v:4},{t:'Ingliz tili',lv:'B1',ce:'CEFR B1',v:3}];
+SAMPLE.po[0].o='https://namuna.uz/loyiha';SAMPLE.skNo=false;SAMPLE.lgMig=false;
 const SC=[['ism','Ism','Aziza'],['fam','Familiya','Karimova'],['ot','Otasining ismi (ixtiyoriy)','Rahimovna'],['lav','Lavozim','Masalan: marketing mutaxassisi'],['tel','Telefon','+998 90 123 45 67'],['tg','Telegram','@foydalanuvchi_nomi'],['em','Email','ism@email.uz'],['li','LinkedIn (ixtiyoriy)','linkedin.com/in/…'],['sh','Shahar','Toshkent']];
 const LV=['1 — boshlang‘ich','2','3 — o‘rta','4','5 — a’lo'];
-const LS={exp:['Ish tajribasi',[['t','Lavozim'],['o','Tashkilot'],['s','Boshlanish','mo'],['e','Tugash (bo‘sh bo‘lsa — hozirgacha)','mo'],['p','Vazifalar (har qatorda bittadan)','ta']]],edu:['Ta’lim',[['t','Daraja'],['o','Muassasa'],['d','Yillar / holat']]],sk:['Ko‘nikmalar',[['t','Nomi'],['v','Daraja','sel']]],lg:['Tillar',[['t','Til'],['v','Daraja','sel']]],
-ce:['Malaka oshirish va sertifikatlar',[['t','Kurs / sertifikat nomi'],['o','Bergan tashkilot'],['d','Yil']],1],po:['Portfolio',[['t','Loyiha nomi'],['o','Havola'],['d','Qisqa tavsif','ta']],1],rf:['Tavsiyanomalar',[['t','Ism familiya'],['o','Lavozim va tashkilot'],['d','Telefon / email']],1]};
+const EDL=[['','— tanlang —'],['mkt','O‘rta (maktab)'],['omx','O‘rta maxsus / professional (kollej, texnikum)'],['tug','Tugallanmagan oliy (talaba)'],['bak','Bakalavr'],['mag','Magistr'],['phd','PhD (falsafa doktori)'],['dsc','DSc (fan doktori)'],['oth','Boshqa']];
+const EDS=[['','— tanlang —'],['kun','Kunduzgi'],['sir','Sirtqi'],['kech','Kechki'],['mas','Masofaviy']];
+const CEFRL=[['','— tanlang —'],['N','Ona tili'],['A1','A1 — boshlang‘ich'],['A2','A2 — elementar'],['B1','B1 — o‘rta'],['B2','B2 — o‘rtadan yuqori'],['C1','C1 — yuqori'],['C2','C2 — mukammal']];
+const LS={exp:['Ish tajribasi',[['t','Lavozim'],['o','Tashkilot'],['s','Boshlanish','mo'],['e','Tugash (bo‘sh bo‘lsa — hozirgacha)','mo'],['p','Vazifalar (har qatorda bittadan)','ta']]],edu:['Ta’lim',[['lv','Daraja',EDL],['t','Yo‘nalish (mutaxassislik)'],['o','O‘quv muassasasi'],['y1','Boshlangan yili'],['y2','Tugash yili'],['cur','Hozir shu yerda o‘qiyapman','chk'],['sh','Ta’lim shakli',EDS],['shc','Ta’lim shaklini CV’da ko‘rsatish','chk'],['gpa','GPA yoki o‘rtacha baho (ixtiyoriy)'],['aw','Grant yoki mukofot (ixtiyoriy)']]],sk:['Ko‘nikmalar',[['t','Nomi'],['v','Daraja','sel']]],lg:['Tillar',[['t','Til'],['lv','Daraja (CEFR)',CEFRL],['ce','Sertifikat (ixtiyoriy)']]],
+ce:['Malaka oshirish va sertifikatlar',[['t','Kurs / sertifikat nomi'],['o','Bergan tashkilot'],['d','Yil']],1],po:['Portfolio',[['t','Nomi'],['o','Havola (Google Drive, sayt, Behance…)'],['d','Qisqa tavsif (ixtiyoriy)','ta']],1],rf:['Tavsiyanomalar',[['t','Ism familiya'],['o','Lavozim va tashkilot'],['d','Telefon / email']],1]};
 const MSUP=(()=>{const i=document.createElement('input');i.setAttribute('type','month');return i.type==='month'})();
-const fld=(l,at,v,ty)=>ty==='mo'?(MSUP?`<label>${l}<input type="month" ${at} value="${esc(v)}"></label>`:`<label>${l}<input type="text" inputmode="numeric" placeholder="yyyy-oo (2024-05)" maxlength="7" ${at} value="${esc(v)}"></label>`):ty==='ta'?`<label>${l}<textarea rows="3" ${at}>${esc(v)}</textarea></label>`:ty==='sel'?`<label>${l}<b>${LV[v-1]}</b><input type="range" min="1" max="5" value="${v}" ${at}></label>`:`<label>${l}<input ${at} value="${esc(v)}"></label>`;
+const fld=(l,at,v,ty)=>Array.isArray(ty)?`<label>${l}<select ${at}>${ty.map(([c,n])=>`<option value="${c}"${c===(v||'')?' selected':''}>${n}</option>`).join('')}</select></label>`:ty==='chk'?`<label class="chk"><input type="checkbox" ${at}${v?' checked':''}><span>${l}</span></label>`:fld0(l,at,v,ty);
+const fld0=(l,at,v,ty)=>ty==='mo'?(MSUP?`<label>${l}<input type="month" ${at} value="${esc(v)}"></label>`:`<label>${l}<input type="text" inputmode="numeric" placeholder="yyyy-oo (2024-05)" maxlength="7" ${at} value="${esc(v)}"></label>`):ty==='ta'?`<label>${l}<textarea rows="3" ${at}>${esc(v)}</textarea></label>`:ty==='sel'?`<label>${l}<b>${LV[v-1]}</b><input type="range" min="1" max="5" value="${v}" ${at}></label>`:`<label>${l}<input ${at} value="${esc(v)}"></label>`;
 const blank=k=>{const o={};LS[k][1].forEach(([f])=>o[f]=f==='v'?3:'');return o};
 let P=[],cur=0,tm,L=null,A=0,zl=0,pgN=1,pgOK=0;const K='cvstudio2';
 const TV=2,MIG=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,0,60,61,7,62,71,63,64,65,66,67,68,69,67,68,70,71,0,72,73,0,89,74,75,6,76,74,77,78,79,92,80,81,0,0,82,98,0,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105];
@@ -1528,7 +1547,8 @@ const okPhoto=v=>typeof v==='string'&&/^data:image\/(png|jpe?g|webp|gif);base64,
 function sane(n){if(!okPhoto(n.photo))n.photo='';n.px=num(n.px,0,100,50);n.py=num(n.py,0,100,50);n.pz=num(n.pz,1,3,1);
   if(!/^(#[0-9a-f]{3}|#[0-9a-f]{6})?$/i.test(n.ac||''))n.ac='';if(!['strip','clean'].includes(n.p2))n.p2='clean';
   n.mlcy=n.mlcy===true?1:[0,1,2].includes(+n.mlcy)?+n.mlcy:0;if(!['t','i'].includes(n.ci))n.ci='t';if(!['uz','en','ru'].includes(n.cl))n.cl='uz';n.nv=[0,1,2].includes(+n.nv)?+n.nv:0;if(!['ha','yoq',''].includes(n.mv))n.mv='';
-  Object.keys(LS).forEach(k=>{if(!Array.isArray(n[k]))n[k]=[];n[k]=n[k].filter(x=>x&&typeof x==='object');n[k].forEach(x=>{if('v' in x||k==='sk'||k==='lg')x.v=Math.round(num(x.v,1,5,3))})});
+  Object.keys(LS).forEach(k=>{if(!Array.isArray(n[k]))n[k]=[];n[k]=n[k].filter(x=>x&&typeof x==='object');n[k].forEach(x=>{if('v' in x||k==='sk')x.v=Math.round(num(x.v,1,5,3))})});
+  n.edu.forEach(x=>{eduMig(x);if(!EDL.some(e=>e[0]===x.lv))x.lv='';if(!EDS.some(e=>e[0]===x.sh))x.sh='';x.cur=!!x.cur;x.shc=!!x.shc});n.lg.forEach(x=>{lgMig(x,n);if(!CEFRL.some(e=>e[0]===x.lv))x.lv=''});n.skNo=!!n.skNo;n.lgMig=!!n.lgMig;
   if(!n.ml||typeof n.ml!=='object')n.ml=emptyML();['mf','qa'].forEach(k=>{if(!Array.isArray(n.ml[k]))n.ml[k]=[]});if(!n.ml.mf.length)n.ml.mf=[{p:'',t:''}];if(!n.ml.qa.length)n.ml.qa=[blankQ()];
   if(!n.pe||typeof n.pe!=='object')n.pe={b:'',m:'',dl:''};return n}
 function setD(o){o=o&&typeof o==='object'?o:{};const n=Object.assign(cl(SAMPLE),cl(o));if(!o.ml)n.ml=emptyML();if(!o.ar)n.ar=emptyAR();n.on=Object.assign({},SAMPLE.on,o.on);if(!o.tx||typeof o.tx!=='object')n.tx={};sane(n);Object.keys(D).forEach(k=>delete D[k]);Object.assign(D,n)}
@@ -1570,10 +1590,10 @@ function txMissing(){if(!txOn())return 0;const c=D.cl,T=(D.tx&&D.tx[c])||{},has=
 const TXB=()=>txOn()?` <i class="txb">${LNM[D.cl]}</i>`:'';
 function lgbar(){const b=$('#lgbar');if(!b)return;b.innerHTML='<span>CV tili</span>'+['uz','en','ru'].map(v=>`<button data-lgc="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')+(txOn()?`<p>Hozir CV’ning <b>${D.cl==='en'?'inglizcha':'ruscha'}</b> versiyasini yozyapsiz. Bo‘sh maydonlarda kulrang ko‘rinib turgan o‘zbekcha matn ishlatiladi. Telefon, sana va daraja barcha tillarda bir xil.</p>`:'')}
 function lists(){
-  const row=(k,fs)=>D[k].map((r,i)=>`<div class="row">${fs.map(([f,l,ty])=>{const tx=txOn()&&TXF[k]&&TXF[k].includes(f),ph=tx?(autoI(k,r,f)||r[f]||PHL[k+'.'+f]||''):(PHL[k+'.'+f]||'');return fld(l+(tx?TXB():''),`data-k="${k}" data-i="${i}" data-f="${f}"${tx?' data-tx="1"':''}${ph?` placeholder="${esc(ph)}"`:''}`,tx?((r.tx&&r.tx[D.cl]&&r.tx[D.cl][f])||''):r[f],ty)}).join('')}<button class="del" data-del="${k}:${i}">O‘chirish</button></div>`).join('')+`<button data-add="${k}">Qo‘shish</button>`;
+  const row=(k,fs)=>D[k].map((r,i)=>`<div class="row">${fs.filter(([f])=>rowShow(k,r,f)).map(([f,l,ty])=>{l=rowLab(k,r,f,l);const tx=txOn()&&TXF[k]&&TXF[k].includes(f),ph=tx?(autoI(k,r,f)||r[f]||PHL[k+'.'+f]||''):(PHL[k+'.'+f]||'');return fld(l+(tx?TXB():''),`data-k="${k}" data-i="${i}" data-f="${f}"${rowAttr(k,r,f)}${tx?' data-tx="1"':''}${ph?` placeholder="${esc(ph)}"`:''}`,tx?((r.tx&&r.tx[D.cl]&&r.tx[D.cl][f])||''):r[f],ty)+rowHint(k,r,f)}).join('')}<button class="del" data-del="${k}:${i}">O‘chirish</button></div>`).join('')+`<button data-add="${k}">Qo‘shish</button>`;
   const sw=(k,n,on)=>`<div class="sw"><span>${n}</span><span class="tg"><input type="checkbox" data-on="${k}"${on?' checked':''}><i></i></span></div>`;
   let a='',b='',s3='';const tb=k=>TIPS[k]?` <button class="tipb" data-tip="${k}">Qanday yozish kerak?</button>`:'';
-  Object.entries(LS).forEach(([k,[n,fs,opt]])=>{if(opt)b+=sw(k,n,D.on[k])+(D.on[k]?row(k,fs):'');else if(k==='sk'||k==='lg')s3+=`<h2>${n}${tb(k)}</h2>`+row(k,fs);else a+=`<h2>${n}${tb(k)}</h2>`+row(k,fs)});
+  Object.entries(LS).forEach(([k,[n,fs,opt]])=>{if(opt)b+=sw(k,n,D.on[k])+(D.on[k]?row(k,fs):'');else if(k==='sk'||k==='lg')s3+=`<h2>${n}${tb(k)}</h2>`+(k==='sk'?`<div class="sw"><span>Ko‘nikma darajasini ko‘rsatish (shkala)</span><span class="tg"><input type="checkbox" data-skl="1"${D.skNo?'':' checked'}><i></i></span></div>`:'')+row(k,fs);else a+=`<h2>${n}${tb(k)}</h2>`+row(k,fs)});
   b+=sw('qr','QR kod (havola)',D.on.qr)+(D.on.qr?fld('Havola (Telegram, portfolio…)','data-s="qu"',D.qu)+fld('Yozuv (QR ostida)','data-s="ql"',D.ql):'');
   b+=sw('pe','Shaxsiy ma’lumotlar',D.on.pe)+(D.on.pe?`<label>Tug‘ilgan sana<input type="date" data-pe="b" value="${esc(D.pe.b)}"></label>`+(txOn()?fld('Oilaviy holat'+TXB(),`data-pe="m" data-tx="1" placeholder="${esc(D.pe.m)}"`,txGet('pe_m'))+fld('Haydovchilik guvohnomasi'+TXB(),`data-pe="dl" data-tx="1" placeholder="${esc(D.pe.dl)}"`,txGet('pe_dl')):fld('Oilaviy holat','data-pe="m"',D.pe.m)+fld('Haydovchilik guvohnomasi','data-pe="dl"',D.pe.dl)):'');
   $('#lA').innerHTML=a;$('#lS').innerHTML=s3;$('#lB').innerHTML=b}
@@ -1584,7 +1604,7 @@ const F=$('#form');
 F.addEventListener('input',e=>{const t=e.target,d=t.dataset;
   if(t.id==='cvn'){L[A].n=t.value||'CV';const a=$('#cvl .act');if(a)a.textContent=L[A].n;save();return}
   if(d.s){if(d.tx&&txOn())txT()[d.s]=t.value;else D[d.s]=t.value;if(['px','py','pz'].includes(d.s))$('#pprev').innerHTML=img()}
-  else if(d.k){let v=t.value;if(t.type==='text'&&(d.f==='s'||d.f==='e')&&d.k==='exp'){const m=v.trim().match(/^(\d{1,2})[./-](\d{4})$/);if(m&&+m[1]>=1&&+m[1]<=12)v=m[2]+'-'+m[1].padStart(2,'0')}if(d.tx&&txOn()){const it=D[d.k][+d.i];if(!it.tx||typeof it.tx!=='object')it.tx={};(it.tx[D.cl]=it.tx[D.cl]||{})[d.f]=v}else D[d.k][+d.i][d.f]=d.f==='v'?+v:v;if(t.type==='range')t.parentNode.querySelector('b').textContent=LV[t.value-1]}
+  else if(d.k){if(t.type==='checkbox')return;let v=t.value;if(t.type==='text'&&(d.f==='s'||d.f==='e')&&d.k==='exp'){const m=v.trim().match(/^(\d{1,2})[./-](\d{4})$/);if(m&&+m[1]>=1&&+m[1]<=12)v=m[2]+'-'+m[1].padStart(2,'0')}if(d.tx&&txOn()){const it=D[d.k][+d.i];if(!it.tx||typeof it.tx!=='object')it.tx={};(it.tx[D.cl]=it.tx[D.cl]||{})[d.f]=v}else D[d.k][+d.i][d.f]=d.f==='v'?+v:v;if(t.tagName==='SELECT'){if(d.k==='lg')D.lgMig=false;setTimeout(lists,0)}if(t.type==='range')t.parentNode.querySelector('b').textContent=LV[t.value-1]}
   else if(d.pe){if(d.tx&&txOn())txT()['pe_'+d.pe]=t.value;else D.pe[d.pe]=t.value}
   else if(d.ml)D.ml[d.ml]=t.value;
   else if(d.lk)D.ml[d.lk][+d.i][d.f]=t.type==='checkbox'?t.checked:t.value;
@@ -1592,6 +1612,9 @@ F.addEventListener('input',e=>{const t=e.target,d=t.dataset;
   else if(d.th!==undefined)D.th=t.value;
   else return;chg()});
 F.addEventListener('change',e=>{const t=e.target;
+  if(t.dataset.skl){D.skNo=!t.checked;lists();chg();return}
+  if(t.dataset.k&&t.type==='checkbox'){D[t.dataset.k][+t.dataset.i][t.dataset.f]=t.checked;lists();chg();return}
+  if(t.dataset.k==='po'&&t.dataset.f==='o'){lists();return}
   if(t.dataset.vt){setVil(t);return}
   if(t.dataset.lk&&t.type==='checkbox'){D.ml[t.dataset.lk][+t.dataset.i][t.dataset.f]=t.checked;mlform();chg();return}
   if(t.id==='pfile'){const f=t.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);D.photo=c.toDataURL('image/jpeg',.88);D.px=D.py=50;D.pz=1;pic();chg()};im.src=r.result};r.readAsDataURL(f);return}
@@ -1648,6 +1671,9 @@ ru:{mn:['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг',
  bd:'Дата рождения',ms:'Семейное положение',dl:'Водительское удостоверение',ot:'Отчество',rel:'готов(а) к переезду',cont:'продолжение',pg:n=>'Стр. '+n,
  ci:['Тел.:','Telegram:','E-mail:','LinkedIn:','Город:'],ph:['Имя','Фамилия','Должность','Фото']}};
 const CVT=k=>(CLG[D.cl]||CLG.uz)[k];
+Object.assign(CLG.uz,{el:{mkt:'o‘rta (maktab)',omx:'o‘rta maxsus',tug:'tugallanmagan oliy',bak:'bakalavr',mag:'magistr',phd:'PhD',dsc:'DSc'},ef:{kun:'kunduzgi',sir:'sirtqi',kech:'kechki',mas:'masofaviy'},prog:'o‘qimoqda',native:'Ona tili'});
+Object.assign(CLG.en,{el:{mkt:'Secondary school',omx:'Vocational education',tug:'Undergraduate student',bak:'Bachelor’s degree',mag:'Master’s degree',phd:'PhD',dsc:'Doctor of Science (DSc)'},ef:{kun:'Full-time',sir:'Part-time (extramural)',kech:'Evening',mas:'Distance learning'},prog:'in progress',native:'Native'});
+Object.assign(CLG.ru,{el:{mkt:'Среднее',omx:'Среднее специальное',tug:'Неоконченное высшее',bak:'Бакалавр',mag:'Магистр',phd:'PhD (доктор философии)',dsc:'Доктор наук (DSc)'},ef:{kun:'очная форма',sir:'заочная форма',kech:'вечерняя форма',mas:'дистанционная форма'},prog:'обучаюсь',native:'Родной'});
 const ok=s=>/^\d{4}-\d{2}$/.test(s||'');
 const fm=s=>{const[y,m]=s.split('-');return CVT('mn')[+m-1]+' '+y};
 const dur=(s,e)=>{const a=s.split('-').map(Number),b=ok(e)?e.split('-').map(Number):[new Date().getFullYear(),new Date().getMonth()+1],n=(b[0]-a[0])*12+b[1]-a[1]+1;if(n<1)return'';const y=Math.floor(n/12),m=n%12;return CVT('dur')(y,m).filter(Boolean).join(' ')};
@@ -1658,23 +1684,23 @@ function build(){const X=locD();
   const ln=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
   const e2=x=>`<div class="ed"><b>${esc(x.t)}</b><span>${[x.o,x.d].filter(Boolean).map(esc).join(' · ')}</span></div>`;
   const L=k=>(X.on[k]?D[k]:[]).filter(x=>x.t||x.o);
-  const CI=X.ci==='i'?['✆','✈','✉','in','⌖']:CVT('ci'),ct=[[CI[0],X.tel],[CI[1],X.tg],[CI[2],X.em],[CI[3],(X.li||'').replace(/^https?:\/\/(www\.)?/,'')],[CI[4],X.sh?X.sh+(X.mv==='ha'?' ('+CVT('rel')+')':''):'']].filter(x=>x[1]);
-  const sx=X.sk.filter(x=>x.t),lx=X.lg.filter(x=>x.t),ex=X.exp.filter(x=>x.t||x.o).sort((a,b)=>(ok(b.s)?b.s:'').localeCompare(ok(a.s)?a.s:'')),ed=X.edu.filter(x=>x.t||x.o),ac=ln(X.ach),ce=L('ce'),po=L('po'),rf=L('rf');
+  const CI=X.ci==='i'?['✆','✈','✉','in','⌖']:CVT('ci'),ct=[[CI[0],X.tel,telH(X.tel)],[CI[1],X.tg,tgH(X.tg)],[CI[2],X.em,mailH(X.em)],[CI[3],(X.li||'').replace(/^https?:\/\/(www\.)?/,''),urlH(X.li)],[CI[4],X.sh?X.sh+(X.mv==='ha'?' ('+CVT('rel')+')':''):'']].filter(x=>x[1]);
+  const sx=X.sk.filter(x=>x.t),lx=X.lg.filter(x=>x.t),ex=X.exp.filter(x=>x.t||x.o).sort((a,b)=>(ok(b.s)?b.s:'').localeCompare(ok(a.s)?a.s:'')),ed=X.edu.filter(x=>x.t||x.o||(x.lv&&x.lv!=='oth')),ac=ln(X.ach),ce=L('ce'),po=L('po'),rf=L('rf');
   const pl=X.on.pe?[[CVT('bd'),fdate(X.pe.b)],[CVT('ms'),X.pe.m],[CVT('dl'),X.pe.dl]].filter(x=>x[1]):[];
   const qon=X.on.qr&&X.qu&&window.QRCode,PH0=CVT('ph'),H=k=>esc(CVT(k));
   S={
   head:sec('head',`<h1><span>${esc(X.ism)||PH0[0]}</span> <b>${esc(X.fam)||PH0[1]}</b></h1><h2>${esc(X.lav)||PH0[2]}</h2>${X.ot?`<div class="otn">${CVT('ot')}: ${esc(X.ot)}</div>`:''}`),
   photo:sec('photo',`<div class="ph">${X.photo?img():PH0[3]}</div>`),
-  contact:sec('contact',`<h3>${H('contact')}</h3>${ct.map(([i,v])=>`<div><span class="cl">${i}</span> ${esc(v)}</div>`).join('')}`,!ct.length),
+  contact:sec('contact',`<h3>${H('contact')}</h3>${ct.map(([i,v,h])=>`<div><span class="cl">${i}</span> ${lnk(h,v)}</div>`).join('')}`,!ct.length),
   about:sec('about',`<h3>${H('about')}</h3><p>${esc(X.profil)}</p>`,!X.profil),
   exp:sec('exp',`<h3>${H('exp')}</h3>${ex.map(x=>`<div class="it"><div class="r"><span>${esc(x.t)}</span><time>${esc(per(x))}</time></div><div class="m">${[x.o,ok(x.s)?dur(x.s,x.e):''].filter(Boolean).map(esc).join(' · ')}</div><ul>${ln(x.p).map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('')}`,!ex.length),
-  edu:sec('edu',`<h3>${H('edu')}</h3>${ed.map(e2).join('')}`,!ed.length),
+  edu:sec('edu',`<h3>${H('edu')}</h3>${ed.map(eduH).join('')}`,!ed.length),
   skills:sec('skills',`<h3>${H('skills')}</h3><div class="skw">${sx.map(x=>`<div class="sk"><span>${esc(x.t)}</span><i><b style="width:${x.v*20}%"></b></i><em>${dots(x.v,'★')}</em></div>`).join('')}</div>`,!sx.length),
-  lang:sec('lang',`<h3>${H('lang')}</h3>${lx.map(x=>`<div class="lg"><span>${esc(x.t)}</span><em>${dots(x.v,'●')}</em></div>`).join('')}`,!lx.length),
+  lang:sec('lang',`<h3>${H('lang')}</h3>${lx.map(x=>`<div class="lg"><span>${esc(x.t)}${x.ce?`<small>${esc(x.ce)}</small>`:''}</span><em class="cefr">${esc(x.lv==='N'?CVT('native'):(x.lv||''))}</em></div>`).join('')}`,!lx.length),
   ach:sec('ach',`<h3>${H('ach')}</h3><ul>${ac.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`,!ac.length),
   cert:sec('cert',`<h3>${H('cert')}</h3>${ce.map(e2).join('')}`,!ce.length),
-  port:sec('port',`<h3>${H('port')}</h3>${po.map(x=>`<div class="ed"><b>${esc(x.t)}</b><span>${[x.d,x.o].filter(Boolean).map(esc).join(' · ')}</span></div>`).join('')}`,!po.length),
-  ref:sec('ref',`<h3>${H('ref')}</h3>${rf.map(e2).join('')}`,!rf.length),
+  port:sec('port',`<h3>${H('port')}</h3>${po.map(x=>`<div class="ed"><b>${esc(x.t)}</b><span>${[x.d?esc(x.d):'',x.o?lnk(urlH(x.o),shortU(x.o),'lnk'):''].filter(Boolean).join(' · ')}</span></div>`).join('')}`,!po.length),
+  ref:sec('ref',`<h3>${H('ref')}</h3>${rf.map(x=>`<div class="ed"><b>${esc(x.t)}</b><span>${[x.o?esc(x.o):'',x.d?lnk(mailH(x.d)||telH(x.d),x.d):''].filter(Boolean).join(' · ')}</span></div>`).join('')}`,!rf.length),
   pers:sec('pers',`<h3>${H('pers')}</h3>${pl.map(([k,v])=>`<div class="kv"><span>${k}</span>${esc(v)}</div>`).join('')}`,!pl.length),
   qr:sec('qr',`<div class="qrb"></div><small>${esc(X.ql)}</small>`,!qon)};
   if(qon)try{new QRCode(S.qr.querySelector('.qrb'),{text:X.qu,width:92,height:92,correctLevel:QRCode.CorrectLevel.M})}catch(e){}
@@ -1806,7 +1832,7 @@ function stripCol(cs){const l=cs.getPropertyValue('--lbg').trim(),a=cs.getProper
   const lum=c=>{let r,g,b,m=c.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);if(m){let x=m[1];if(x.length===3)x=x.replace(/./g,'$&$&');r=parseInt(x.slice(0,2),16);g=parseInt(x.slice(2,4),16);b=parseInt(x.slice(4,6),16)}else{m=c.match(/rgba?\((\d+)[ ,]+(\d+)[ ,]+(\d+)/);if(!m)return null;r=+m[1];g=+m[2];b=+m[3]}return .299*r+.587*g+.114*b};
   for(const c of [l,a]){const v=lum(c);if(v!==null&&v<170)return c}return '#444'}
 const mk=n=>{const d=document.createElement('div'),p2=n&&D.p2;
-  d.className=(p2?'cv p2 p2-'+D.p2:'cv '+TH[cur][1]+(nvc(cur)&&D.nv?' nv'+D.nv:''))+(zl?' z'+zl:'');
+  d.className=(p2?'cv p2 p2-'+D.p2:'cv '+TH[cur][1]+(nvc(cur)&&D.nv?' nv'+D.nv:''))+(zl?' z'+zl:'')+(D.skNo?' k-nolv':'');
   d.innerHTML=p2?`<div class="T"><div class="ph2"><b>${esc(locD().ism)} ${esc(locD().fam)}</b><span>${esc(CVT('pg')(n+1))}</span></div></div><div class="L"></div><div class="R"></div>`:(n?'':'<div class="T"></div>')+'<div class="L"></div><div class="R"></div>'+(n||!TH[cur][5]?'':'<div class="B"></div>');
   if(p2){const cs=getComputedStyle($('#pages').children[0]);['--ac','--hf','--bf'].forEach(v=>d.style.setProperty(v,cs.getPropertyValue(v)));d.style.setProperty('--sc',stripCol(cs))}else applyAc(d);
   $('#pages').appendChild(d);return d};
@@ -1873,7 +1899,7 @@ $('#lp').addEventListener('click',e=>{const t=e.target,c=t.closest('[data-li]'),
   else if(t.closest('[data-rl]')){grole=t.closest('[data-rl]').dataset.rl;lpbuild()}
   else if(t.closest('#lpx'))document.body.classList.remove('lp')});
 const ob=document.createElement('button');ob.id='optb';ob.textContent='⚙ Sozlash';ob.setAttribute('aria-label','Rang, til va boshqa sozlamalar');ob.onclick=()=>{document.body.classList.toggle('optopen')};bar.appendChild(ob);
-const pb=document.createElement('button');pb.className='pr';pb.textContent='PDF yuklash';pb.onclick=()=>{if(!D.mv)return needMv();pdfp('0',(D.fam+' '+D.ism+' CV').trim())};bar.appendChild(pb);
+const pb=document.createElement('button');pb.className='pr';pb.textContent='PDF yuklash';pb.onclick=()=>{if(!D.mv)return needMv();if(eduMissing())return needEdu();pdfp('0',(D.fam+' '+D.ism+' CV').trim())};bar.appendChild(pb);
 const NVN={"t116": ["Kobalt", "Zumrad", "Qirmizi"], "t117": ["Qizil", "Indigo", "Yashil"], "t118": ["Klassik", "Qizil-qora", "Firuza"], "t119": ["Kobalt", "Yashil-oltin", "Jigarrang"], "t120": ["Yashil", "Navy", "Bordo"], "t121": ["Qora", "Ko‘k", "Yashil"], "t122": ["Firuza", "Bordo", "Zaytun"]},nvc=i=>NVN[TH[i][1].split(' ')[0]];
 const PAL=['#1f3a5f','#0f766e','#7a1f3d','#1f5eff','#374151','#b45309','#6d28d9','#15803d'],DK=[0, 1, 7, 11, 12, 18, 21, 30, 97, 105];
 function applyAc(d,idx=cur){const c=D.ac;if(!c)return;const s=d.style;s.setProperty('--ac',c);
@@ -1912,8 +1938,10 @@ function chk(){
   if(ex2.length){const le=Math.max(...ex2.map(z=>z[1]));if(nowI-le>3)w.push('Oxirgi ishdan keyin '+(nowI-le)+' oy o‘tgan: hozirgi faoliyatingizni (o‘qish, loyiha, kurs) yozib qo‘ying')}
   const txt=[D.lav,D.profil,...D.exp.map(x=>x.t+' '+x.p)].join(' ');
   {const n=txMissing();if(n)w.push('CV tili '+LNM[D.cl]+': '+n+' ta maydon hali '+(D.cl==='en'?'inglizcha':'ruscha')+' yozilmagan va o‘zbekcha chiqadi. «Men haqimda», «Ish va o‘qish» va «Ko‘nikmalar» qadamlarida '+LNM[D.cl]+' belgili maydonlarni to‘ldiring')}
+  if(D.lgMig)w.push('Til darajalari yangi shkalaga (A1–C2) o‘tkazildi: tekshirib chiqing');
+  D.lg.forEach(x=>{if(x.t&&!x.lv)w.push('«'+x.t+'»: til darajasini tanlang (A1–C2)')});
   if(pgOK&&pgN>1&&!D.fit)w.push('CV 2 betga o‘tdi. «1 betga sig‘dirish»ni sinab ko‘ring');
-  const u=[...new Set(w)];if(!D.mv)u.unshift('Majburiy: ko‘chishga tayyorligingizni tanlang (Ha / Yo‘q)');
+  const u=[...new Set(w)];if(eduMissing())u.unshift('Majburiy: tugallanmagan oliy uchun ta’lim shaklini tanlang');if(!D.mv)u.unshift('Majburiy: ko‘chishga tayyorligingizni tanlang (Ha / Yo‘q)');
   if(!D.ism&&!D.fam&&!D.lav&&!D.tel&&!D.em){$('#chs').textContent='Ma’lumot kiritishni boshlang: maslahatlar shu yerda chiqadi';$('#chl').innerHTML='';return}
   const pc=readyPct();
   $('#chs').innerHTML=`<span>CV ${pc}% tayyor${u.length?' · '+u.length+' ta maslahat':' · hammasi joyida ✓'}</span><i class="pbar"><b style="width:${pc}%"></b></i>`;
@@ -1922,12 +1950,37 @@ function chk(){
 let FX=[];
 function readyPct(){const f=v=>String(v||'').trim(),c=[f(D.ism),f(D.fam),f(D.lav),f(D.tel),f(D.em),f(D.sh),D.mv,f(D.profil),D.exp.some(x=>f(x.t)&&ok(x.s)&&f(x.p)),D.edu.some(x=>f(x.t)||f(x.o)),D.sk.filter(x=>f(x.t)).length>=3,D.lg.some(x=>f(x.t)),D.photo];return Math.round(c.filter(Boolean).length/c.length*100)}
 function fixTarget(m){const S=k=>[0,`[data-s="${k}"]`];
+  if(/^Majburiy: tugallanmagan/.test(m))return [1,'[data-need]'];if(/^Til darajalari|til darajasini/.test(m))return [2,'#lS'];
   if(/^Majburiy: ko‘chish/.test(m))return [0,'#mvg'];if(/^Ism/.test(m))return S('ism');if(/^Familiya/.test(m))return S('fam');if(/^Lavozim/.test(m))return S('lav');
   if(/^Telefon/.test(m))return S('tel');if(/^Telegram/.test(m))return [0,'details.more'];if(/^Email/.test(m))return S('em');if(/O‘zim haqimda/.test(m))return S('profil');
   if(/^Yutuqlar/.test(m))return [2,'[data-s="ach"]'];if(/^Rasm/.test(m))return [0,'#pic'];if(/^CV tili/.test(m))return [0,'#lgbar'];
   if(/^Ko‘nikmalar/.test(m))return [2,'#lS'];if(/^(Malaka|Portfolio|Tavsiyanoma)/.test(m))return [2,'#lB'];
   if(/^(Ta’lim|Ish tajribasi|Vazifalarda|«|Oxirgi ishdan)/.test(m))return [1,'#lA'];if(/2 betga|dizaynda rasm/.test(m))return [3,null];return null}
 function doFix(i){const t=FX[i];if(!t)return;$('#form details').open=false;tab(t[0]);if(!t[1])return;setTimeout(()=>{const e=$('#form '+t[1])||$(t[1]);if(!e)return;if(e.tagName==='DETAILS')e.open=true;e.scrollIntoView({block:'center',behavior:'smooth'});const inp=e.matches('input,textarea')?e:null;if(inp)setTimeout(()=>{try{inp.focus({preventScroll:true})}catch(x){}},350);e.classList.remove('flash');void e.offsetWidth;e.classList.add('flash')},150)}
+/* ===== v1.3: ta'lim, tillar, havolalar ===== */
+const rowShow=(k,r,f)=>!(k==='edu'&&f==='shc'&&r.lv==='tug')&&!(k==='sk'&&f==='v'&&D.skNo);
+const rowLab=(k,r,f,l)=>k==='edu'&&f==='sh'&&r.lv==='tug'?l+' <em class="req">* majburiy</em>':k==='edu'&&f==='y2'&&r.cur?'Taxminiy tugash yili (ixtiyoriy)':l;
+const rowAttr=(k,r,f)=>(k==='edu'&&(f==='y1'||f==='y2')?' inputmode="numeric" maxlength="4"':'')+(k==='edu'&&f==='sh'&&r.lv==='tug'&&!r.sh?' data-need="1"':'')+(k==='po'&&f==='o'?' inputmode="url" autocapitalize="off"':'');
+const rowHint=(k,r,f)=>{if(k==='po'&&f==='o'&&r.o){if(!urlH(r.o))return '<div class="hint">Havola to‘liq emas. U «https://» bilan boshlanadigan manzil bo‘lishi kerak.</div>';if(/(drive|docs)\.google\./i.test(r.o))return '<div class="hint">Google Drive’da faylni <b>Ulashish → «Havolasi bor har kim ko‘ra oladi»</b> qilib qo‘ying. Aks holda ish beruvchi faylni ocholmaydi.</div>'}
+  if(k==='edu'&&f==='lv'&&r.lv==='tug'&&!r.sh)return '<div class="hint">Tugallanmagan oliy uchun pastda ta’lim shaklini tanlash majburiy. Ish beruvchi ishga qaysi vaqtda chiqa olishingizni shundan biladi.</div>';return ''};
+const urlH=v=>{v=String(v||'').trim();if(!v)return '';if(/^https?:\/\//i.test(v))return /^https?:\/\/[^\s<>"'`]+\.[^\s<>"'`]+$/i.test(v)?v:'';return /^[\w-]+(\.[\w-]+)+(\/[^\s<>"'`]*)?$/i.test(v)?'https://'+v:''};
+const mailH=v=>{v=String(v||'').trim();return /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(v)?'mailto:'+v:''};
+const telH=v=>{const d=String(v||'').replace(/[^\d+]/g,'');return /^\+?\d{7,15}$/.test(d)?'tel:'+d:''};
+const tgH=v=>{v=String(v||'').trim();if(!v)return '';if(/t\.me\//i.test(v))return urlH(v);const u=v.replace(/^@/,'');return /^[A-Za-z0-9_]{4,32}$/.test(u)?'https://t.me/'+u:''};
+const shortU=v=>{v=String(v||'').trim().replace(/^https?:\/\/(www\.)?/i,'').replace(/\/$/,'');return v.length>36?v.slice(0,34)+'…':v};
+const lnk=(h,t,c)=>h?`<a${c?` class="${c}"`:''} href="${esc(h)}">${esc(t)}</a>`:esc(t);
+function eduYrs(x){const n=CVT('now');if(x.y1){if(x.cur)return x.y2?x.y1+'–'+x.y2+' ('+CVT('prog')+')':x.y1+' – '+n;return x.y2&&x.y2!==x.y1?x.y1+'–'+x.y2:x.y1}return x.d||''}
+function eduH(x){const lv=x.lv&&x.lv!=='oth'?CVT('el')[x.lv]:'',hd=[x.t,lv].filter(Boolean).join(', '),fm=x.sh&&(x.lv==='tug'||x.shc)?CVT('ef')[x.sh]:'',l2=[x.o,eduYrs(x),fm,x.gpa?'GPA '+x.gpa:''].filter(Boolean).map(esc).join(' · ');
+  return `<div class="ed"><b>${esc(hd)}</b><span>${l2}</span>${x.aw?`<span class="aw">${esc(x.aw)}</span>`:''}</div>`}
+const eduMissing=()=>D.edu.some(x=>x.lv==='tug'&&!x.sh);
+function needEdu(){toast('Tugallanmagan oliy ta’lim uchun ta’lim shaklini tanlang: kunduzgi, sirtqi, kechki yoki masofaviy');tab(1);setTimeout(()=>{const g=$('#form [data-need]');if(g){g.scrollIntoView({block:'center',behavior:'smooth'});g.classList.remove('flash');void g.offsetWidth;g.classList.add('flash')}},150)}
+function eduMig(x){if(!x||'lv' in x)return;const ELV={phd:/\b(phd|falsafa doktori)\b/i,dsc:/\b(dsc|fan doktori|fanlar doktori)\b/i,mag:/magistr|master|магистр/i,bak:/bakalavr|bachelor|бакалавр/i,tug:/tugallanmagan|talaba|student|студент/i,omx:/kollej|texnikum|o[‘'ʻ`]?rta maxsus|professional|колледж/i,mkt:/maktab|litsey|школ/i};const s=String(x.t||'');x.lv=Object.keys(ELV).find(k=>ELV[k].test(s))||'';
+  x.t=s.replace(/\s*[(,–-]?\s*\(?\s*(bakalavr(iat)?|magistr(atura)?|bachelor[’']?s?( degree)?|master[’']?s?( degree)?|phd|tugallanmagan oliy)\s*\)?\s*$/i,'').trim();
+  if(x.tx)Object.values(x.tx).forEach(t=>{if(t&&t.t)t.t=String(t.t).replace(/\s*\((bachelor[’']?s?( degree)?|master[’']?s?( degree)?|бакалавр|магистр)\)\s*$/i,'').trim()});
+  const d=String(x.d||''),m=d.match(/(\d{4})\D+(\d{4})/),m1=d.match(/\d{4}/);x.y1=m?m[1]:m1?m1[0]:'';x.y2=m?m[2]:'';x.cur=/hozir|o[‘'ʻ]?qimoqda|davom|in progress|обуча/i.test(d)||(x.lv==='tug');
+  if(x.y1&&/^\s*\d{4}(\D+\d{4})?\s*$/.test(d.replace(/\(.*?\)/g,'')))x.d='';x.sh='';x.shc=false;x.gpa='';x.aw=''}
+function lgMig(x,n){if(!x||'lv' in x)return;const v=Math.round(num(x.v,1,5,3));x.lv=/o[‘'ʻ`]?zbek|uzbek|узбек/i.test(x.t||'')&&v>=5?'N':['A1','A2','B1','B2','C1'][v-1];x.ce='';if(x.t)n.lgMig=true}
+
 const PROV=['Toshkent shahri','Toshkent viloyati','Andijon viloyati','Buxoro viloyati','Farg‘ona viloyati','Jizzax viloyati','Xorazm viloyati','Namangan viloyati','Navoiy viloyati','Qashqadaryo viloyati','Qoraqalpog‘iston Respublikasi','Samarqand viloyati','Sirdaryo viloyati','Surxondaryo viloyati'];
 const vsel=(vt,v)=>`<label>Viloyatni tanlang<select data-vt="${vt}"><option value="">—</option>${PROV.map(p=>`<option${(v||'').startsWith(p)?' selected':''}>${p}</option>`).join('')}</select></label>`;
 function setVil(s){const[k,a,b]=s.dataset.vt.split(':');let inp,v,set;
@@ -1980,12 +2033,13 @@ function mlauto(){const m=D.ml,em=k=>!String(m[k]||'').trim();
   if(em('lav'))m.lav=D.lav;
   if(em('yil')&&D.pe&&D.pe.b)m.yil=fdate(D.pe.b);
   const ed=D.edu.filter(x=>x.t||x.o)[0];
-  if(ed){if(em('tam'))m.tam=[ed.d,ed.o].filter(Boolean).join(', ');if(em('mut'))m.mut=ed.t}
-  const ln=D.lg.filter(x=>x.t&&x.v>=4&&!/o‘zbek/i.test(x.t)).map(x=>x.t.replace(/\s*tili.*$/i,'').toLowerCase());
+  if(ed){const SH={kun:'kunduzgi',sir:'sirtqi',kech:'kechki',mas:'masofaviy'},MP={mkt:'o‘rta',omx:'o‘rta maxsus',tug:'tugallanmagan oliy',bak:'oliy',mag:'oliy',phd:'oliy',dsc:'oliy'};
+    if(em('tam'))m.tam=[ed.y2&&!ed.cur?ed.y2+' y.':(ed.d||''),ed.o,ed.sh?'('+SH[ed.sh]+')':''].filter(Boolean).join(' ');if(em('mut'))m.mut=ed.t;if(em('mal')&&MP[ed.lv])m.mal=MP[ed.lv]}
+  const ln=D.lg.filter(x=>x.t&&(x.lv==='C1'||x.lv==='C2')).map(x=>x.t.replace(/\s*tili.*$/i,'').toLowerCase());
   if(em('til')&&ln.length)m.til=ln.join(', ')+' tillari';
   if(!m.mf.some(x=>(x.p||'').trim()||(x.t||'').trim())){
     const it=[];
-    D.edu.filter(x=>x.o).forEach(x=>{const y=(x.d||'').match(/(\d{4})\D+(\d{4})/);if(y)it.push([+y[1],y[1]+'–'+y[2]+' yy.',x.o+' talabasi'])});
+    D.edu.filter(x=>x.o&&x.y1).forEach(x=>{const b=x.cur?'':x.y2;it.push([+x.y1,b?x.y1+'–'+b+' yy.':x.y1+' y. – hozirgacha',x.o+' talabasi'])});
     D.exp.filter(x=>x.t||x.o).forEach(x=>{if(!ok(x.s))return;const a=x.s.slice(0,4),b=ok(x.e)?x.e.slice(0,4):'';it.push([+a,!b?a+' y. – hozirgacha':a===b?a+' y.':a+'–'+b+' yy.',[x.o,x.t].filter(Boolean).join(', ')])});
     it.sort((p,q)=>p[0]-q[0]);if(it.length)m.mf=it.map(x=>({p:x[1],t:x[2]}))}}
 function mlchk(){const m=D.ml,w=[],f=v=>String(v??'').trim();
@@ -2031,7 +2085,7 @@ function setM(v){document.body.dataset.m=v;scrollTo(0,0);if(v==='v')mldoc()}
 
 $('#mlb').addEventListener('click',e=>{const t=e.target;if(t.dataset.mlback!==undefined)setM('f');if(t.dataset.cy!==undefined)setCy(t.dataset.cy);if(t.id==='mlpdf')pdfp('15mm 10mm 10mm 20mm',fnm()+(docT==='th'?' - Tarjimai hol':docT==='ar'?' - Ariza':''))});
 let docT='ml';
-const PHL={'exp.t':'Masalan: SMM menejer','exp.o':'Tashkilot nomi','exp.p':'Har qatorda bittadan, raqam bilan: oyiga 60+ kredit rasmiylashtirdim','edu.t':'Masalan: Moliya (bakalavr)','edu.o':'Universitet nomi','edu.d':'2018–2022','sk.t':'Masalan: Excel','lg.t':'Masalan: Rus tili','ce.t':'Kurs yoki sertifikat nomi','ce.o':'Bergan tashkilot','ce.d':'2024','po.t':'Loyiha nomi','po.o':'Havola','rf.t':'Ism familiya','rf.o':'Lavozim, tashkilot','rf.d':'Telefon yoki email'};
+const PHL={'exp.t':'Masalan: SMM menejer','exp.o':'Tashkilot nomi','exp.p':'Har qatorda bittadan, raqam bilan: oyiga 60+ kredit rasmiylashtirdim','edu.t':'Masalan: Moliya','edu.o':'Masalan: KIUT','edu.y1':'2023','edu.y2':'2027','edu.gpa':'Masalan: 4.2 / 5','edu.aw':'Masalan: Davlat granti','lg.ce':'IELTS 6.5, CEFR B2, Duolingo 120…','sk.t':'Masalan: Excel','lg.t':'Masalan: Rus tili','ce.t':'Kurs yoki sertifikat nomi','ce.o':'Bergan tashkilot','ce.d':'2024','po.t':'Loyiha nomi','po.o':'https://drive.google.com/…','rf.t':'Ism familiya','rf.o':'Lavozim, tashkilot','rf.d':'Telefon yoki email'};
 const PH={fio:'Karimova Aziza Rahimovna',lav:'Namuna MChJ marketing bo‘limi mutaxassisi',lavd:'2024 yil 5 maydan',yil:'12.05.1999',joy:'Toshkent viloyati, Chirchiq shahri',mil:'o‘zbek',par:'yo‘q',tam:'2022 y., Namuna universiteti (kunduzgi)',mut:'marketing mutaxassisi',dar:'yo‘q',unv:'yo‘q',til:'rus, ingliz tillari',harb:'yo‘q',muk:'yo‘q',dep:'yo‘q'};
 const fnm=()=>{const n=(D.ml.fio||[D.fam,D.ism,D.ot].filter(Boolean).join(' ')||'Hujjat').trim();return trs(n)};
 const today=()=>new Date().toLocaleDateString('ru-RU');
@@ -2077,7 +2131,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='1.2',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='1.3',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -2158,7 +2212,8 @@ const TIPS={
 lav:['Lavozim',`<p>Vakansiyadagi lavozim nomini aynan shunday yozing. Kadrlar bo‘limi va qidiruv tizimlari shu so‘zlarga qaraydi.</p><p>✅ Kredit mutaxassisi<br>✅ Kichik biznes mijozlari menejeri<br>✅ SMM menejer</p><p>❌ Bankda ishlayman<br>❌ Har qanday ish</p>`],
 profil:['O‘zim haqimda',`<p>2–3 jumla yetarli: kimsiz, necha yil tajribangiz bor, nimada kuchlisiz va qanday ish izlayapsiz.</p><p>✅ «Bankda 2 yillik tajribaga ega kredit mutaxassisi. Kichik biznes mijozlari bilan ishlash va muammoli kreditlarni undirishda natija ko‘rsatganman. Bosh ofisda risk yo‘nalishida ishlashni maqsad qilganman.»</p><p>❌ «Mas’uliyatli, xushmuomala, kompyuterni yaxshi biladigan, tez o‘rganadigan xodimman.» Bu so‘zlarni hamma yozadi, ular hech narsani isbotlamaydi.</p>`],
 exp:['Ish tajribasi',`<p>Eng oxirgi ish joyidan boshlang. «Vazifalar» maydonida har qatorga bitta natija yozing, iloji boricha raqam bilan.</p><p>✅ Oyiga 60+ kredit arizasini rasmiylashtirdim<br>✅ Muammoli qarzdorlikni 6 oyda 25% ga kamaytirdim<br>✅ 300+ mijozga xizmat ko‘rsatdim</p><p>❌ Kreditlar bilan ishladim<br>❌ Mijozlarga xizmat ko‘rsatish</p><p>Sana kiritsangiz, ish davomiyligi o‘zi hisoblanadi.</p>`],
-edu:['Ta’lim',`<p>Daraja va yo‘nalishni, muassasa nomini to‘liq yozing. O‘qiyotgan bo‘lsangiz, yillar maydoniga «2023–2027 (o‘qimoqda)» deb yozing.</p><p>✅ Moliya (bakalavr) · KIUT · 2023–2027 (o‘qimoqda)</p><p>❌ Universitet</p>`],
+edu:['Ta’lim',`<p>Darajani ro‘yxatdan tanlang, yo‘nalish va muassasani to‘liq yozing. O‘qiyotgan bo‘lsangiz, «Hozir shu yerda o‘qiyapman» ni belgilang.</p><p>CV’da shunday chiqadi: <b>Moliya, tugallanmagan oliy</b> · KIUT · 2023–2027 (o‘qimoqda) · sirtqi</p><p>Tugallanmagan oliy uchun ta’lim shakli majburiy: ish beruvchi qaysi vaqtda ishlay olishingizni shundan biladi.</p><p>GPA yuqori bo‘lsa (masalan, 4.5/5) yoki grant bilan o‘qisangiz, albatta yozing. Yangi bitiruvchilar uchun bu tajriba o‘rnini bosadi.</p>`],
+lg:['Tillar',`<p>Darajani xalqaro CEFR shkalasida tanlang:</p><p><b>A1–A2</b>: oddiy so‘zlar va iboralar<br><b>B1</b>: kundalik mavzularda gaplasha olasiz<br><b>B2</b>: ish mavzularida erkin gaplasha olasiz<br><b>C1</b>: murakkab matn va muzokaralar<br><b>C2</b>: ona tiliga yaqin</p><p>Sertifikatingiz bo‘lsa (IELTS, CEFR, Duolingo), albatta yozing: u darajangizni isbotlaydi.</p>`],
 sk:['Ko‘nikmalar',`<p>Aniq dastur va usullarni yozing, umumiy sifatlarni emas. 5–8 ta ko‘nikma yetarli.</p><p>✅ Excel (VLOOKUP, pivot jadval)<br>✅ 1C: Buxgalteriya<br>✅ Kredit tahlili</p><p>❌ Kompyuter<br>❌ Tez o‘rganaman</p>`],
 ach:['Yutuqlar',`<p>O‘lchab bo‘ladigan va boshqalardan ajratib turadigan natijalarni yozing.</p><p>✅ 2025 yil filial bo‘yicha sotuv rejasini 130% bajardim (1-o‘rin)<br>✅ «Yilning eng yaxshi xodimi» (2024)</p><p>❌ Yaxshi xodim bo‘lganman</p>`]};
 function tipModal(k){const t=TIPS[k];if(!t)return;modal(`<h3>${t[0]}: qanday yozish kerak?</h3>${t[1]}<div class="mbtn"><button class="pri" data-mx="1">Tushunarli</button></div>`)}

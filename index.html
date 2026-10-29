@@ -1358,7 +1358,15 @@ body.inapp #iab{display:flex}
 #lgbar .txh div{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 #form #lgbar .txh button{min-height:40px;padding:9px 14px;font-size:11px}
 #lgbar p{flex-basis:100%;margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--mtx);background:var(--mcard);border:1px solid var(--mbd);border-radius:14px;padding:10px 12px}
-body[data-t="4"] #lgbar,body[data-t="9"] #lgbar{display:none}
+body:not([data-t="0"]) #lgbar{display:none}
+@media(min-width:1100px){body[data-t="1"] #lgbar,body[data-t="2"] #lgbar{display:none}}
+#trbar{max-width:800px;margin:4px auto 8px;padding:8px 10px;border:1px solid var(--mbd);border-radius:16px;background:var(--mcard);color:var(--mtx);font:13px/1.45 Jost,sans-serif}
+#trbar .trt{display:flex;gap:8px;align-items:center;justify-content:space-between}#trbar .trt>div{display:flex;flex-direction:column;line-height:1.25}#trbar .trt b{font-weight:600}#trbar .trt>div span{color:var(--mmut);font-size:12px}
+#trbar .trb{display:flex;gap:8px;margin-top:8px}#trbar .trb button{flex:1}
+#trbar button{border:1px solid var(--mac);border-radius:999px;background:transparent;color:var(--mac);font:600 12px Jost,sans-serif;padding:9px 14px;min-height:40px;cursor:pointer}
+#trbar .trl{display:flex;gap:4px;flex:none}#trbar .trl button{padding:6px 10px;min-height:36px}#trbar button.on{background:var(--mac);color:var(--macx)}
+#md .mseg{display:flex;gap:8px;margin:6px 0}#md .mseg button{flex:1;border:1px solid var(--mac);border-radius:999px;padding:11px;background:transparent;color:var(--mac);font:600 13px Jost,sans-serif;cursor:pointer}#md .mseg button.pri{background:var(--mac);color:var(--macx)}
+@media print{#trbar{display:none!important}}
 .txb{font-style:normal;background:var(--mac);color:var(--macx);border-radius:6px;padding:1px 6px;font-size:10px;letter-spacing:.06em;margin-left:4px;vertical-align:1px}
 #form label{font:500 14px Jost,sans-serif;letter-spacing:0;text-transform:none;color:var(--mtx)}
 #form h2{font:600 13px Jost,sans-serif;letter-spacing:.08em;color:var(--mtx);opacity:.8;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -1475,7 +1483,7 @@ body.md #toast{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));transfo
 <div id="about">CV Studio <b id="appv"></b><br>Muallif: <a href="https://instagram.com/fintahlil.uz" target="_blank" rel="noopener">FinTahlil.uz</a><br>Bepul. Ro‘yxatdan o‘tish va reklama yo‘q.</div>
 </div>
 </div>
-<div id="view"><div id="bar"></div><div id="opt"></div><div id="wrap"><div id="pages"></div></div></div>
+<div id="view"><div id="bar"></div><div id="opt"></div><div id="trbar"></div><div id="wrap"><div id="pages"></div></div></div>
 <div id="mlv"><div id="mlb"><button class="mlbk" data-mlback>← To‘ldirish</button><button data-cy="0" class="act">Lotin</button><button data-cy="1">Kirill</button><button data-cy="2">Yangi lotin</button><button id="mlpdf">PDF yuklash</button></div><div id="mlw"><div id="mld"></div></div></div>
 </div>
 <div id="lp"><div class="gt"><div class="gh"><b>Dizaynni tanlang</b><button id="lpx">×</button></div><div id="gtabs"></div></div><div id="gg"></div></div>
@@ -1628,25 +1636,30 @@ const TXB=()=>txOn()?` <i class="txb">${LNM[D.cl]}</i>`:'';
 function txEntries(){const E=[],f=v=>String(v||'').trim(),on=k=>!LS[k]||!LS[k][2]||D.on[k],LB={lav:'Lavozim',profil:'O‘zim haqimda',ach:'Yutuqlar'};
   ['lav','profil','ach'].forEach(k=>{if(f(D[k]))E.push({r:'s|'+k,t:D[k]})});
   if(D.on.pe)['m','dl'].forEach(x=>{if(f(D.pe[x]))E.push({r:'s|pe_'+x,t:D.pe[x]})});
-  Object.keys(TXF).forEach(k=>{if(!on(k))return;(D[k]||[]).forEach((it,i)=>TXF[k].forEach(x=>{if(k==='lg'&&!it.lo)return;if(k==='edu'&&x==='o'&&/^[\x00-\x7f]+$/.test(it.o||''))return;if(f(it[x]))E.push({r:'i|'+k+'|'+i+'|'+x,t:it[x]})}))});return E}
+  Object.keys(TXF).forEach(k=>{if(!on(k))return;(D[k]||[]).forEach((it,i)=>TXF[k].forEach(x=>{if(k==='lg'&&!it.lo)return;if(f(it[x]))E.push({r:'i|'+k+'|'+i+'|'+x,t:it[x]})}))});return E}
 function txBase(ref){const p=ref.split('|');if(p[0]==='s')return p[1].startsWith('pe_')?(D.pe[p[1].slice(3)]||''):(D[p[1]]||'');const it=(D[p[1]]||[])[+p[2]];return it?(it[p[3]]||''):null}
 function txSet(ref,val,base){const p=ref.split('|'),c=D.cl;if(p[0]==='s'){const T=txT();T[p[1]]=val;T['_s_'+p[1]]=base;return true}
   const it=(D[p[1]]||[])[+p[2]];if(!it)return false;if(!it.tx||typeof it.tx!=='object')it.tx={};const T=(it.tx[c]=it.tx[c]||{});T[p[3]]=val;T['_s_'+p[3]]=base;return true}
-function txExport(){const E=txEntries();if(!E.length)return toast('Tarjima qilinadigan o‘zbekcha matn yo‘q');lss('cvstx',JSON.stringify({l:D.cl,E}));
-  const txt=E.map((e,i)=>`[[${i+1}]]\n${e.t}`).join('\n\n'),lang=D.cl==='en'?'ingliz':'rus';
-  modal(`<h3>Matnni ${lang} tiliga tarjima qilish</h3><ol><li>Pastdagi matn nusxalandi. Nusxalanmagan bo‘lsa, uni belgilab o‘zingiz nusxalang.</li><li>Uni <b>Google Tarjimon</b>, <b>Claude</b> yoki boshqa tarjimonga joylang: o‘zbek tilidan ${lang} tiliga.</li><li>Tarjimani to‘liq nusxalang va <b>«Tarjimani joylash»</b> tugmasini bosing.</li></ol><p><small>[[1]], [[2]] kabi raqamlarni o‘chirmang: ular har bir tarjimani o‘z maydoniga joylash uchun kerak.</small></p><textarea id="txout" rows="8" readonly style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif">${esc(txt)}</textarea><div class="mbtn"><button class="pri" data-txin="1">Tarjimani joylash</button><button data-mx="1">Yopish</button></div>`);
+function txExport(){const E=txEntries();if(!E.length)return toast('Tarjima qilinadigan o‘zbekcha matn yo‘q');lss('cvstx',JSON.stringify({E}));
+  const txt=E.map((e,i)=>`[[${i+1}]]\n${e.t}`).join('\n\n'),lang='ingliz yoki rus';
+  modal(`<h3>CV’ni tarjima qilish</h3><ol><li>Pastdagi matn nusxalandi. Nusxalanmagan bo‘lsa, uni belgilab o‘zingiz nusxalang.</li><li>Uni <b>Google Tarjimon</b>, <b>Claude</b> yoki boshqa tarjimonga joylang: o‘zbek tilidan ${lang} tiliga.</li><li>Tarjimani to‘liq nusxalang va <b>«Tarjimani joylash»</b> tugmasini bosing.</li></ol><p><small>[[1]], [[2]] kabi raqamlarni o‘chirmang: ular har bir tarjimani o‘z maydoniga joylash uchun kerak.</small></p><textarea id="txout" rows="8" readonly style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif">${esc(txt)}</textarea><div class="mbtn"><button class="pri" data-txin="1">Tarjimani joylash</button><button data-mx="1">Yopish</button></div>`);
   setTimeout(()=>{const a=$('#txout');if(a){a.focus();a.select()}},50);copyTxt(txt).then(ok=>{if(ok)toast('✓ '+E.length+' ta matn nusxalandi')})}
-function txImport(){modal(`<h3>Tarjimani joylash</h3><p>Tarjimonda olingan matnni shu yerga to‘liq joylang, [[1]], [[2]] raqamlari bilan birga.</p><textarea id="txin" rows="9" style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif" placeholder="[[1]]&#10;Credit Specialist&#10;&#10;[[2]]&#10;…"></textarea><div class="mbtn"><button class="pri" data-txapply="1">Maydonlarga joylash</button><button data-mx="1">Bekor qilish</button></div>`);setTimeout(()=>{const a=$('#txin');if(a)a.focus()},50)}
+let txLang='en',txLangSet=0;
+function txLangUI(){document.querySelectorAll('#mdb [data-txl]').forEach(b=>b.classList.toggle('pri',b.dataset.txl===txLang))}
+function txImport(){txLang=txOn()?D.cl:'en';txLangSet=0;modal(`<h3>Tarjimani joylash</h3><p>Tarjimonda olingan matnni shu yerga to‘liq joylang, [[1]], [[2]] raqamlari bilan birga.</p><p><b>Tarjima tili:</b></p><div class="mseg"><button data-txl="en">ENG — inglizcha</button><button data-txl="ru">RUS — ruscha</button></div><p><small>Til matndan o‘zi aniqlanadi. Noto‘g‘ri bo‘lsa, tugmani bosib almashtiring.</small></p><textarea id="txin" rows="9" style="width:100%;border:1px solid var(--mbd);border-radius:12px;padding:10px;background:var(--min);color:var(--mtx);font:13px/1.5 Jost,sans-serif" placeholder="[[1]]&#10;Credit Specialist&#10;&#10;[[2]]&#10;…"></textarea><div class="mbtn"><button class="pri" data-txapply="1">Maydonlarga joylash</button><button data-mx="1">Bekor qilish</button></div>`);txLangUI();setTimeout(()=>{const a=$('#txin');if(a){a.focus();a.addEventListener('input',()=>{if(txLangSet)return;txLang=/[А-Яа-яЁё]/.test(a.value)?'ru':/[A-Za-z]/.test(a.value)?'en':txLang;txLangUI()})}},50)}
 function txApply(){const raw=String(($('#txin')||{}).value||'');let st=null;try{st=JSON.parse(lsg('cvstx')||'null')}catch(e){}
-  if(!st||!Array.isArray(st.E))return toast('Avval «Matnni nusxalash» tugmasini bosing');
+  if(!st||!Array.isArray(st.E))return toast('Avval «Matnni nusxalash» tugmasini bosing');if(!txLangSet)txLang=/[А-Яа-яЁё]/.test(raw)?'ru':'en';const prev=D.cl;D.cl=txLang;
   const parts=raw.split(/\[\[?\s*(\d+)\s*\]\]?/);let n=0,miss=0;
   for(let i=1;i<parts.length;i+=2){const k=+parts[i]-1,v=String(parts[i+1]||'').replace(/^\s*\n|\s+$/g,'').trim(),e=st.E[k];if(!e||!v){miss++;continue}
-    const cur=txBase(e.r);if(cur===null){miss++;continue}if(st.l!==D.cl){D.cl=st.l}if(txSet(e.r,v,e.t))n++}
-  if(!n)return toast('Hech narsa joylanmadi. [[1]], [[2]] raqamlari bor tarjimani joylang');
-  mclose();fill();opts();chg();toast('✓ '+n+' ta tarjima joylandi'+(miss?', '+miss+' tasi topilmadi':'')+'. CV’ni tekshirib chiqing')}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-txexp],[data-txin],[data-txapply]');if(!b)return;e.preventDefault();
+    const cur=txBase(e.r);if(cur===null){miss++;continue}if(txSet(e.r,v,e.t))n++}
+  if(!n){D.cl=prev;return toast('Hech narsa joylanmadi. [[1]], [[2]] raqamlari bor tarjimani joylang')}
+  mclose();fill();opts();chg();toast('✓ '+n+' ta '+(txLang==='ru'?'ruscha':'inglizcha')+' tarjima joylandi'+(miss?', '+miss+' tasi topilmadi':'')+'. CV endi '+LNM[txLang]+' tilida')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-txexp],[data-txin],[data-txapply],[data-txl]');if(!b)return;e.preventDefault();if(b.dataset.txl){txLang=b.dataset.txl;txLangSet=1;txLangUI();return}
   if(b.dataset.txexp)txExport();if(b.dataset.txin)txImport();if(b.dataset.txapply)txApply()},true);
-function lgbar(){const b=$('#lgbar');if(!b)return;b.innerHTML='<span>CV tili</span>'+['uz','en','ru'].map(v=>`<button data-lgc="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')+(txOn()?`<p>Hozir CV’ning <b>${D.cl==='en'?'inglizcha':'ruscha'}</b> versiyasini yozyapsiz. Bo‘sh maydonlarda kulrang ko‘rinib turgan o‘zbekcha matn ishlatiladi. Telefon, sana va daraja barcha tillarda bir xil.</p><div class="txh"><b>Tez tarjima:</b> barcha o‘zbekcha matnni nusxalab, Google Tarjimon yoki Claude’da tarjima qiling va natijani joylang. Har bir tarjima o‘z maydoniga tushadi.<div><button data-txexp="1">1. Matnni nusxalash</button><button data-txin="1">2. Tarjimani joylash</button></div></div>`:'')}
+function trbar(){const b=$('#trbar');if(!b)return;const n=txOn()?txMissing():0;
+  b.innerHTML=`<div class="trt"><div><b>Tarjima</b><span>${txOn()?(n?`${n} ta maydon hali o‘zbekcha`:'hammasi tarjima qilingan ✓'):'o‘zbekcha CV’ni ENG yoki RUS qilish'}</span></div><span class="trl">${['uz','en','ru'].map(v=>`<button data-cl2="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')}</span></div><div class="trb"><button data-txexp="1">1. Matnni nusxalash</button><button data-txin="1">2. Tarjimani joylash</button></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-cl2]');if(!b)return;D.cl=b.dataset.cl2;opts();fill();chg()});
+function lgbar(){const b=$('#lgbar');if(!b)return;b.innerHTML='<span>CV tili</span>'+['uz','en','ru'].map(v=>`<button data-lgc="${v}" class="${(D.cl||'uz')===v?'on':''}">${LNM[v]}</button>`).join('')+(txOn()?`<p>Hozir CV’ning <b>${D.cl==='en'?'inglizcha':'ruscha'}</b> versiyasini yozyapsiz. Bo‘sh maydonlarda kulrang ko‘rinib turgan o‘zbekcha matn ishlatiladi. Telefon, sana va daraja barcha tillarda bir xil. Hammasini o‘zbekcha yozib, oxirgi qadamda («Dizayn va PDF») bir yo‘la tarjima qilsangiz ham bo‘ladi.</p>`:`<p>Hammasini o‘zbekcha yozing. Inglizcha yoki ruscha CV kerak bo‘lsa, oxirgi qadamda («Dizayn va PDF») tarjima qilasiz.</p>`)}
 function lists(){
   const row=(k,fs)=>D[k].map((r,i)=>`<div class="row">${fs.filter(([f])=>rowShow(k,r,f)).map(([f,l,ty])=>{l=rowLab(k,r,f,l);const tx=txOn()&&TXF[k]&&TXF[k].includes(f),ph=tx?(autoI(k,r,f)||r[f]||PHL[k+'.'+f]||''):(PHL[k+'.'+f]||'');return fld(l+(tx?TXB():''),`data-k="${k}" data-i="${i}" data-f="${f}"${rowAttr(k,r,f)}${tx?' data-tx="1"':''}${ph?` placeholder="${esc(ph)}"`:''}`,tx?((r.tx&&r.tx[D.cl]&&r.tx[D.cl][f])||''):rowVal(k,r,f),typeof ty==='function'?ty(r):ty)+(tx&&txStale(r.tx&&r.tx[D.cl],f,r[f])?staleHint('i|'+k+'|'+i+'|'+f):'')+rowHint(k,r,f)}).join('')}<button class="del" data-del="${k}:${i}">O‘chirish</button></div>`).join('')+`<button data-add="${k}">Qo‘shish</button>`;
   const sw=(k,n,on)=>`<div class="sw"><span>${n}</span><span class="tg"><input type="checkbox" data-on="${k}"${on?' checked':''}><i></i></span></div>`;
@@ -1742,7 +1755,7 @@ let S={};
 function build(){const X=locD();
   const ln=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
   const e2=x=>`<div class="ed"><b>${esc(x.t)}</b><span>${[x.o,x.d].filter(Boolean).map(esc).join(' · ')}</span></div>`;
-  const L=k=>(X.on[k]?D[k]:[]).filter(x=>x.t||x.o);
+  const L=k=>(X.on[k]?X[k]||[]:[]).filter(x=>x.t||x.o);
   const CI=X.ci==='i'?['✆','✈','✉','in','⌖']:CVT('ci'),ct=[[CI[0],X.tel,telH(X.tel)],[CI[1],X.tg,tgH(X.tg)],[CI[2],X.em,mailH(X.em)],[CI[3],(X.li||'').replace(/^https?:\/\/(www\.)?/,''),urlH(X.li)],[CI[4],X.sh?X.sh+(X.mv==='ha'?' ('+CVT('rel')+')':''):'']].filter(x=>x[1]);
   const sx=X.sk.filter(x=>x.t),lx=X.lg.filter(x=>x.t),ex=X.exp.filter(x=>x.t||x.o).sort((a,b)=>(ok(b.s)?b.s:'').localeCompare(ok(a.s)?a.s:'')),ed=X.edu.filter(x=>x.t||x.o||(x.lv&&x.lv!=='oth')),ac=ln(X.ach),ce=L('ce'),po=L('po'),rf=L('rf');
   const pl=X.on.pe?[[CVT('bd'),fdate(X.pe.b)],[CVT('ms'),X.pe.m],[CVT('dl'),X.pe.dl]].filter(x=>x[1]):[];
@@ -1919,7 +1932,7 @@ function render(){
   if(!vis())return;
   $('#wrap').style.zoom=1;zl=0;let n=lay();
   while(D.fit&&n>1&&zl<3){zl++;n=lay()}
-  pgN=n;pgOK=1;fit();
+  pgN=n;pgOK=1;fit();trbar();
   $('#lname').textContent=(cur+1)+'. '+TH[cur][0]+' ▾';
   chk();
 }
@@ -2202,7 +2215,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='1.5',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='1.6',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);

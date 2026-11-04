@@ -1485,12 +1485,6 @@ body.md #toast{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));transfo
 <textarea id="bk" rows="3"></textarea>
 <div class="two"><button id="bkc">Nusxa olish</button><button id="bkr">Matndan tiklash</button></div></details>
 </details>
-<details class="acc"><summary>🔒 PIN-kod</summary>
-<p class="s">PIN faqat sahifani ochishni to‘sadi, ma’lumotlarni shifrlamaydi.</p>
-<label>PIN-kod (4 ta raqam)<input id="pinv" type="password" inputmode="numeric" maxlength="4"></label>
-<div class="two"><button id="pins">PIN saqlash</button><button id="pind">PIN olib tashlash</button></div>
-<p class="s" id="pinm"></p>
-</details>
 <details class="acc"><summary>❓ Yordam va ilova haqida</summary>
 <button id="tourb">Boshlash oynasini ochish</button>
 <button data-priv="1" style="margin-top:10px">Maxfiylik va shartlar</button>
@@ -1511,7 +1505,7 @@ body.md #toast{bottom:auto;top:calc(14px + env(safe-area-inset-top,0px));transfo
 <div id="mlv"><div id="mlb"><button class="mlbk" data-mlback>← To‘ldirish</button><button data-cy="0" class="act">Lotin</button><button data-cy="1">Kirill</button><button data-cy="2">Yangi lotin</button><button id="mlpdf">PDF yuklash</button></div><p class="s" id="cyn2"></p><div id="mlw"><div id="mld"></div></div></div>
 </div>
 <div id="lp"><div class="gt"><div class="gh"><b>Dizaynni tanlang</b><button id="lpx">×</button></div><div id="gtabs"></div></div><div id="gg"></div></div>
-<div id="lock"><div class="lc"><div class="logo">CV STUDIO</div><p>PIN-kodni kiriting</p><input id="lki" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div id="lke"></div><button id="lkb">Ochish</button></div></div>
+
 <div id="tour"><div class="welc"><div class="logo">CV STUDIO</div><div class="by">REZYUME YARATUVCHI · FinTahlil.uz</div><div class="uisel notr" id="wui"></div>
 <div class="wb">
 <button class="pri" data-w="sample"><b>Namunadan boshlash</b><small>Tayyor namuna ochiladi, uni o‘zingizniki bilan almashtirasiz</small></button>
@@ -2276,7 +2270,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='2.0',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='2.1',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -2318,7 +2312,7 @@ function needMv(){toast('PDF’dan oldin «Ko‘chishga tayyormisiz?» savoliga 
 function privacy(){modal(`<h3>Maxfiylik va shartlar</h3>
 <h4>MA’LUMOTLARINGIZ</h4><p>Hamma ma’lumot faqat shu qurilmadagi brauzerda saqlanadi. Ilova hech qanday serverga ma’lumot yubormaydi, ro‘yxatdan o‘tish, cookie va kuzatuv (analitika) yo‘q.</p>
 <p>Brauzer tarixi tozalansa yoki telefon almashtirilsa, ma’lumotlar yo‘qoladi. Shuning uchun ☰ menyudagi «Saqlash faylini yuklab olish» tugmasidan foydalaning.</p>
-<h4>PIN-KOD</h4><p>PIN faqat ilovani ochishni to‘sadi, ma’lumotlarni shifrlamaydi. Umumiy qurilmada ishlatgan bo‘lsangiz, oxirida «Hamma ma’lumotni o‘chirish» ni bosing.</p>
+<p>Umumiy yoki birovning qurilmasida ishlatgan bo‘lsangiz, tugatgach «Hamma ma’lumotni o‘chirish»ni bosing.</p>
 <h4>HUJJATLAR</h4><p>Ma’lumotnoma, Tarjimai hol va Ariza ochiq namunalar asosida tuzilgan va rasmiy shakl emas. Topshirishdan oldin idoraning talabini tekshiring. Kirill va yangi lotin alifbosiga avtomatik o‘tkazishda xato bo‘lishi mumkin. Hujjat mazmuni uchun foydalanuvchi o‘zi javob beradi.</p>
 <h4>MUALLIF</h4><p>CV Studio v${APPV} (${APPD}) · <a href="${IG_URL}" target="_blank" rel="noopener">FinTahlil.uz</a>. Bepul foydalanish uchun.</p>
 <h4>LITSENZIYALAR</h4><p><small>Shriftlar SIL Open Font License 1.1 ostida: Poppins, Lato, Lora, Playfair Display, Montserrat, Cormorant Garamond, Jost, Caveat, Dancing Script, Patrick Hand, Inter, IBM Plex Sans, Raleway, Nunito, EB Garamond, Oswald, Roboto Slab, PT Serif (Google Fonts / Fontsource orqali). Roboto: Apache License 2.0. QR kod: qrcodejs, © davidshimjs, MIT License. Maketlar va naqshlar CV Studio uchun chizilgan.</small></p>
@@ -2375,12 +2369,8 @@ function bkHelp(){if(lsg('cvsbkhelp'))return toast('✓ Saqlash fayli yuklab oli
 
 const PK='cvspin',FK='cvsfirst',lsg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},lss=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}},lsr=k=>{try{localStorage.removeItem(k)}catch(e){}};
 async function hp(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('cvs'+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return 'x'+btoa(s)}}
-if(lsg(PK))document.body.classList.add('lock');else if(!lsg(FK))document.body.classList.add('tour');
-$('#lkb').onclick=async()=>{if(await hp($('#lki').value)===lsg(PK)){document.body.classList.remove('lock');$('#lki').value='';$('#lke').textContent='';if(!lsg(FK))document.body.classList.add('tour')}else $('#lke').textContent='PIN noto‘g‘ri'};
-$('#lki').addEventListener('keydown',e=>{if(e.key==='Enter')$('#lkb').click()});
+lsr(PK);if(!lsg(FK))document.body.classList.add('tour');
 $('#tourb').onclick=()=>{document.body.classList.add('tour')};
-$('#pins').onclick=async()=>{const v=$('#pinv').value;if(!/^\d{4}$/.test(v)){$('#pinm').textContent='4 ta raqam kiriting.';return}lss(PK,await hp(v));$('#pinv').value='';$('#pinm').textContent='PIN saqlandi. Sahifa keyingi ochilishda PIN so‘raydi.'};
-$('#pind').onclick=()=>{lsr(PK);$('#pinm').textContent='PIN olib tashlandi.'};
 let wa=0;$('#wipe').onclick=e=>{const b=e.target;if(!wa){wa=1;b.textContent='Rostdan o‘chirilsinmi? Yana bosing';setTimeout(()=>{wa=0;b.textContent='Hamma ma’lumotni o‘chirish'},4000);return}
   wa=0;b.textContent='Hamma ma’lumotni o‘chirish';L=[{n:'CV 1',D:emptyD(),cur:0}];A=0;P=[];setD(L[0].D);cur=0;lsr('cvstudio1');lsr(PK);fill();pic();pfl();cvl();opts();chg();tab(0)};
 const wide=()=>matchMedia('(min-width:1100px)').matches;let lastT=0;

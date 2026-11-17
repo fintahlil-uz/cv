@@ -1361,8 +1361,10 @@ body.inapp #iab{display:flex}
 #top .logo{color:var(--mhdx)}#top .logo small{color:var(--mhdm)!important}#mb,#lgb,#thb{color:var(--mhdx)!important}
 body[data-t="0"] #top,body[data-t="1"] #top,body[data-t="2"] #top{padding-bottom:58px}
 #hero{display:none}
+
 body[data-t="0"] #chs .pbar,body[data-t="1"] #chs .pbar,body[data-t="2"] #chs .pbar{display:none}
 body[data-t="0"] #hero,body[data-t="1"] #hero,body[data-t="2"] #hero{display:flex;align-items:center;gap:14px;background:var(--mcard);border-radius:22px;padding:14px 16px;margin:-50px 0 14px;position:relative;z-index:2;box-shadow:0 10px 26px #1c26331c}
+@media(min-width:1100px){body[data-t] #top{padding-bottom:18px!important}body[data-t] #hero{margin:0 0 14px!important}}
 .hav{width:62px;height:62px;border-radius:50%;background:var(--mbg);border:3px solid var(--mbd);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none;font:700 21px 'IBM Plex Sans',system-ui,sans-serif;color:var(--mac)}.hav img{width:100%;height:100%;object-fit:cover}
 .hin{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}.hin b{font:700 17px 'IBM Plex Sans',system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hin i{font:600 13px 'IBM Plex Sans',system-ui,sans-serif;font-style:normal;color:var(--mac);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hin small{font:400 12px 'IBM Plex Sans',system-ui,sans-serif;color:var(--mmut)}
 .hring{width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--mac) calc(var(--p)*1%),var(--mbd) 0);display:flex;align-items:center;justify-content:center;flex:none}.hring span{width:44px;height:44px;border-radius:50%;background:var(--mcard);display:flex;align-items:center;justify-content:center;font:700 13px 'IBM Plex Sans',system-ui,sans-serif}
@@ -2302,7 +2304,7 @@ function endAll(){if(document.body.classList.contains('pall')){document.body.cla
 addEventListener('afterprint',endAll);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(Date.now()-pT>1500)setTimeout(endAll,50)},true));
 
 /* ===== Ulashish uchun qo‘shimchalar ===== */
-const APPV='2.3',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
+const APPV='2.4',APPD='2026-10-29',FB_URL='https://ig.me/m/fintahlil.uz',IG_URL='https://instagram.com/fintahlil.uz';
 const UA=navigator.userAgent||'';
 const INAPP=!!window.TelegramWebviewProxy||/Telegram|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|MicroMessenger|TikTok|musical_ly|Snapchat|; wv\)/i.test(UA);
 const IOS=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
